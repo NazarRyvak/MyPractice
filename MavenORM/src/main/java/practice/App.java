@@ -21,8 +21,10 @@ public class App {
 		//Query.addRandomPerson(em);
 		//Query.addRandomCity(em);
 		//Query.addRandomCountry(em);
+		//Query.addRandomHobby(em);
 		//Query.addCityToCountry(em);
 		//Query.addCountryAndCityToPerson(em);
+		//Query.addHobbyToPerson(em);
 		//Query.outputFromPerson(em);
 		//Query.outputReverseCountry(em);
 		//Query.outputCitySortedName(em);
@@ -33,7 +35,7 @@ public class App {
 		//Query.outputAVGPerson(em);
 		//Query.outputPeopleAndCity(em);
 		//Query.outputPersonAndCityNotEqualsId(em);
-		//Query.outputALL(em);
+		Query.outputALL(em);
 		
 		
 		em.getTransaction().commit();

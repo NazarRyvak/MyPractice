@@ -13,24 +13,43 @@ import javax.persistence.EntityManager;
 import practice.entity.Person;
 import practice.entity.City;
 import practice.entity.Country;
+import practice.entity.Hobby;
 
 
 
 public class Query {
+	
+	private static Random rd = new Random();
 
 	public static void addRandomPerson(EntityManager em) throws IOException {
 
 		BufferedReader inputStream = null;
-		Random rd = new Random();
 
 		try {
-			inputStream = new BufferedReader(new FileReader("src/main/java/p/fullName.txt"));
+			inputStream = new BufferedReader(new FileReader("src/main/java/practice/fullName.txt"));
 			String l;
 			while ((l = inputStream.readLine()) != null) {
 				Person person = new Person();
 				person.setFullName(l);
-				person.setAge(rd.nextInt(80));
+				person.setAge(rd.nextInt(100));
 				em.persist(person);
+			}
+		} finally {
+			if (inputStream != null) {
+				inputStream.close();
+			}
+		}
+	}
+	
+	public static void addRandomHobby(EntityManager em) throws IOException {
+		BufferedReader inputStream = null;
+		try {
+			inputStream = new BufferedReader(new FileReader("src/main/java/practice/hobby.txt"));
+			String l;
+			while ((l = inputStream.readLine()) != null) {
+				Hobby hobby = new Hobby();
+				hobby.setName(l);
+				em.persist(hobby);
 			}
 		} finally {
 			if (inputStream != null) {
@@ -43,7 +62,7 @@ public class Query {
 
 		BufferedReader inputStream = null;
 		try {
-			inputStream = new BufferedReader(new FileReader("src/main/java/p/city.txt"));
+			inputStream = new BufferedReader(new FileReader("src/main/java/practice/city.txt"));
 			String l;
 			while ((l = inputStream.readLine()) != null) {
 				City city = new City();
@@ -61,7 +80,7 @@ public class Query {
 
 		BufferedReader inputStream = null;
 		try {
-			inputStream = new BufferedReader(new FileReader("src/main/java/p/country.txt"));
+			inputStream = new BufferedReader(new FileReader("src/main/java/practice/country.txt"));
 			String l;
 			while ((l = inputStream.readLine()) != null) {
 				Country country = new Country();
@@ -74,43 +93,54 @@ public class Query {
 			}
 		}
 	}
+	public static void addHobbyToPerson(EntityManager em) {
+		
+		List<Integer> hobbiesId = em.createQuery("select h.id from Hobby h", Integer.class).getResultList();
+		List<Integer> peopleId = em.createQuery("select p.id from Person p", Integer.class).getResultList();
+
+		for (Integer hobbyId : hobbiesId) {
+			int rdCountPeopleWIthHobby = rd.nextInt(peopleId.size()-1);
+			List<Person> people = em.createQuery("select p from Person p", Person.class).getResultList();
+			
+			for (int i = 0; i < rdCountPeopleWIthHobby; i++) {
+				Person person = people.get(rd.nextInt(people.size()-1));
+				Hobby hobby = em.createQuery("select h from Hobby h where h.id=:id", Hobby.class).
+						setParameter("id", hobbyId).getSingleResult();
+				if (!person.getHobbies().contains(hobby)) {
+					person.getHobbies().add(hobby);
+				}
+			}
+		}
+		
+	}
+	
 
 	public static void addCityToCountry(EntityManager em) {
-
-		Long countCountry = em.createQuery("select count(c) from Country c", Long.class).getSingleResult();
-		Long countCity = em.createQuery("select count(c) from City c", Long.class).getSingleResult();
-		int j = 1;
-
-		for (int i = 1; i <= countCountry; i++) {
-
+		
+		List<Integer> countriesId = em.createQuery("select c.id from Country c", Integer.class).getResultList();
+		List<Integer> citiesId = em.createQuery("select c.id from City c", Integer.class).getResultList();
+		
+		for (Integer id : citiesId) {
+			City city = em.createQuery("select c from City c where c.id=:id", City.class).setParameter("id", id)
+					.getSingleResult();
+			
 			Country country = em.createQuery("select c from Country c where c.id=:id", Country.class)
-					.setParameter("id", i).getSingleResult();
-			do {
-				City city = em.createQuery("select c from City c where c.id=:id", City.class).setParameter("id", j)
-						.getSingleResult();
-				city.setCountry(country);
-				j++;
-				if (j > countCity)
-					break;
-			} while (j % 10 != 0);
-			if (j > countCity)
-				break;
-
+					.setParameter("id", countriesId.get(rd.nextInt(countriesId.size()-1))).getSingleResult();
+			city.setCountry(country);
 		}
 	}
 
 	public static void addCountryAndCityToPerson(EntityManager em) {
-		Random rd = new Random();
-		Long countPerson = em.createQuery("select count(p) from Person p", Long.class).getSingleResult();
+		
+		List<Integer> peopleId = em.createQuery("select p.id from Person p", Integer.class).getResultList();
 		List<City> cities = em.createQuery("select c from City c", City.class).getResultList();
-		for (int i = 1; i <= countPerson; i++) {
-			City city = cities.get(rd.nextInt(cities.size()));
-			Country country = em.createQuery("select c.country from City c where c.id=:id", Country.class)
-					.setParameter("id", city.getId()).getSingleResult();
-			Person person = em.createQuery("select p from Person p where p.id=:id", Person.class).setParameter("id", i)
+		for (Integer personId : peopleId) {
+			City city = cities.get(rd.nextInt(cities.size()-1));
+			Person person = em.createQuery("select p from Person p where p.id=:id", Person.class).setParameter("id", personId)
 					.getSingleResult();
 			person.setCity(city);
-			person.setCountry(country);
+			person.setCountry(city.getCountry());
+			
 		}
 	}
 
@@ -167,8 +197,10 @@ public class Query {
 	}
 	
 	public static void outputALL(EntityManager em) {
-		em.createQuery("select p from Person p join fetch p.city join fetch p.country order by p.id", Person.class).getResultList().stream()
-		.forEach(p -> System.out.println(p + " " + p.getCity()+ " "+p.getCountry()));
+		em.createQuery("select distinct p from Person p join fetch p.city join fetch p.country join fetch p.hobbies order by p.id", Person.class).getResultList().stream()
+		.forEach(p -> System.out.println(p + " " + p.getCity()+ " "+p.getCountry()+ " " + p.getHobbies()));
 	}
+	
+
 
 }
