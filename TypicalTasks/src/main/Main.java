@@ -19,6 +19,16 @@ public class Main {
 		//OneDimensionalArrays.task8(randomIntegerArray(100, -10, 10));
 		//OneDimensionalArrays.task9(randomIntegerArray(100, -10, 10));
 		//OneDimensionalArrays.task10(randomDoubleArray(10, -100, 100));
+		//OneDimensionalArrays.task11(randomIntegerArray(100, -100, 100));
+		//OneDimensionalArrays.task12(randomIntegerArray(100, 1, 100), 10, 0);
+		//OneDimensionalArrays.task13(randomIntegerArray(10, 1, 10));
+		//OneDimensionalArrays.task14(randomIntegerArray(25, 2, 5));
+		//OneDimensionalArrays.task15(randomIntegerArray(25, -50, 50));
+		//OneDimensionalArrays.task16(randomIntegerArray(10, -50, 50));
+		//OneDimensionalArrays.task17(randomDoubleArray(10, -1, 1), 0, 0.5);
+		//OneDimensionalArrays.task18(randomDoubleArray(10, 27, 28));
+		//OneDimensionalArrays.task19(randomIntegerArray(17, -50, 50));
+		OneDimensionalArrays.task20(randomIntegerArray(10, -50, 50));
 	
 		
 	}
