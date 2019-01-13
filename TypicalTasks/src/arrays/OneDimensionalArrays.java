@@ -387,4 +387,215 @@ public class OneDimensionalArrays {
 
 		System.out.println("Result: " + (min + max));
 	}
+	
+	public static void task21(double[] arr, double c, double d) {
+		if (c > d) {
+			System.out.println("The third parameter should be greater than the second");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		System.out.println("Result");
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] >= c && arr[i] <= d) {
+				System.out.print(arr[i] + " ");
+			}
+		}
+	}
+	
+	public static void task22(int[] arr, int m) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		int count = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] < 0) {
+				System.out.println("Your array consist less than 0 elements!!!");
+				return;
+			}
+			if (arr[i] > m) {
+				count++;
+			}
+		}
+		if (count == 0) {
+			System.out.println("The sequence does not have elements larger than " + m);
+			return;
+		}
+
+		long result = 1;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] > m) {
+				result *= arr[i];
+			}
+		}
+
+		System.out.println("Result: " + result);
+	}
+	
+	public static void task23(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		int countZero = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i]==0) {
+				countZero++;
+			}else if (arr[i]>1||arr[i]<0) {
+				System.out.println("Incorrect data!!!The sequence does not contain only 0 and 1");
+				return;
+			}else {
+				continue;
+			}
+		}
+		for (int i = 0; i < arr.length; i++) {
+			if (i < countZero) {
+				arr[i] = 0;
+			}else {
+				arr[i] = 1;
+			}
+		}
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(arr));
+	}
+	
+	public static void task24(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		int max = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] > max) {
+				max = arr[i];
+			}
+		}
+		for (int i = 0; i < arr.length; i++) {
+			if (Math.abs(arr[i]) > max) {
+				arr[i] = 0;
+			}
+		}
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(arr));
+	}
+
+	public static void task25(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!The sequence should have even count of elements");
+			return;
+		}
+		int max = arr[0] + arr[arr.length - 1];
+		for (int i = 1; i < arr.length / 2; i++) {
+			if ((arr[i] + arr[arr.length - 1 - i]) > max) {
+				max = arr[i] + arr[arr.length - 1 - i];
+			}
+		}
+		System.out.println("Result: " + max);
+	}
+	
+	public static void task26(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		long multPositive = 1;
+		long multNegative = 1;
+
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] < 0) {
+				multNegative *= arr[i];
+			} else if (arr[i] > 0) {
+				multPositive *= arr[i];
+			} else {
+				continue;
+			}
+		}
+		if (Math.abs(multNegative) > multPositive) {
+			System.out.println("Negative!!!");
+		} else if (Math.abs(multNegative) < multPositive) {
+			System.out.println("Positive!!!");
+		} else {
+			System.out.println("Equal!!!");
+		}
+	}
+	
+	public static void task27(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		int max = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] > max) {
+				max = arr[i];
+			}
+		}
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == max) {
+				arr[i] = 0;
+				break;
+			}
+		}
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(arr));
+	}
+	
+	public static void task28(int[] arr, int b) {
+		Arrays.sort(arr);
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		int[] result = new int[arr.length + 1];
+		int j = 0;
+		boolean isInsert = false;
+		for (int i = 0; i < arr.length; i++) {
+			if (!isInsert && arr[i] > b) {
+				result[j] = b;
+				isInsert = true;
+				j++;
+			}
+			result[j] = arr[i];
+			j++;
+		}
+		if (!isInsert) {
+			result[result.length - 1] = b;
+		}
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(result));
+	}
+	
+	public static void task29(int[] arr, int m) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		System.out.println("Result:");
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == m * m) {
+				System.out.print(i + " ");
+			}
+		}
+	}
+	
+	public static void task30(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		int min = arr[0];
+		int count = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] < min) {
+				min = arr[i];
+				count = 0;
+			}
+			if (arr[i] == min) {
+				count++;
+			}
+		}
+		int[] result = new int[arr.length-count];
+		int j =0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i]!=min) {
+				result[j] = arr[i];
+				j++;
+			}
+		}
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(result));
+	}
 }

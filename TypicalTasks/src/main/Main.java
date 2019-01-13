@@ -28,7 +28,18 @@ public class Main {
 		//OneDimensionalArrays.task17(randomDoubleArray(10, -1, 1), 0, 0.5);
 		//OneDimensionalArrays.task18(randomDoubleArray(10, 27, 28));
 		//OneDimensionalArrays.task19(randomIntegerArray(17, -50, 50));
-		OneDimensionalArrays.task20(randomIntegerArray(10, -50, 50));
+		//OneDimensionalArrays.task20(randomIntegerArray(10, -50, 50));
+		//OneDimensionalArrays.task21(randomDoubleArray(10, -10, 10), 0, 10);
+		//OneDimensionalArrays.task22(randomIntegerArray(20, 0, 10), 9);
+		//OneDimensionalArrays.task23(randomIntegerArray(10, 0, 1));
+		//OneDimensionalArrays.task24(randomIntegerArray(10, -10, 10));
+		//OneDimensionalArrays.task25(randomIntegerArray(10, -10, 10));
+		//OneDimensionalArrays.task26(randomIntegerArray(10, -10, 10));
+		//OneDimensionalArrays.task27(randomIntegerArray(20, -10, 10));
+		//OneDimensionalArrays.task28(randomIntegerArray(20, 0, 100), 40);
+		//OneDimensionalArrays.task29(randomIntegerArray(20, 0, 10), 3);
+		OneDimensionalArrays.task30(randomIntegerArray(20, 0, 10));
+		
 	
 		
 	}
