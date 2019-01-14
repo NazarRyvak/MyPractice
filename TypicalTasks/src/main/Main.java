@@ -48,8 +48,17 @@ public class Main {
 		//OneDimensionalArrays.task37(randomIntegerArray(21, -5, 5));
 		//OneDimensionalArrays.task38(randomIntegerArray(30, -10, 10), 10);
 		//OneDimensionalArrays.task39(randomIntegerArray(30, -10, 10));
-		OneDimensionalArrays.task40(randomIntegerArray(30, -10, 10),randomIntegerArray(30, -10, 10));
-		
+		//OneDimensionalArrays.task40(randomIntegerArray(30, -10, 10),randomIntegerArray(30, -10, 10));
+		//OneDimensionalArrays.task41(randomIntegerArray(3, -10, 10));
+		//OneDimensionalArrays.task42(randomIntegerArray(5, -10, 10),randomIntegerArray(5, -10, 10));
+		//OneDimensionalArrays.task43(randomIntegerArray(5, -10, 10));
+		//OneDimensionalArrays.task44(randomDoubleArray(10, 0, 100));
+		//OneDimensionalArrays.task45(randomIntegerArray(30, -100, 100), 2);
+		//OneDimensionalArrays.task46(randomIntegerArray(10, -10, 10));
+		//OneDimensionalArrays.task47(randomDoubleArray(10, 0, 100), 50);
+		//OneDimensionalArrays.task48(randomIntegerArray(10, -10, 10));
+		//OneDimensionalArrays.task49(randomIntegerArray(100, 0, 80));
+		OneDimensionalArrays.task50(randomIntegerArray(20, -20, 20));
 	
 		
 	}
@@ -68,7 +77,7 @@ public class Main {
 
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = min + rd.nextInt(max - min + 1);
-			if (arr[i] < 0) {
+			if (arr[i] <= 0) {
 				arr[i] = arr[i] + (double) rd.nextInt(100) / 100;
 			} else {
 				arr[i] = arr[i] - (double) rd.nextInt(100) / 100;

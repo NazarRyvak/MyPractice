@@ -844,5 +844,251 @@ public class OneDimensionalArrays {
 		System.out.println(Arrays.toString(arrB));
 
 	}
+	
+	public static void task41(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
 
+		int min = arr[0];
+		int max = arr[0];
+
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] < min) {
+				min = arr[i];
+			} else if (arr[i] > max) {
+				max = arr[i];
+			} else {
+				continue;
+			}
+		}
+		if (min < 0) {
+			for (int i = 0; i < arr.length; i++) {
+				arr[i] = arr[i] * min * min;
+			}
+		} else {
+			for (int i = 0; i < arr.length; i++) {
+				arr[i] = arr[i] * max * max;
+			}
+		}
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(arr));	
+	}
+	
+	public static void task42(int[] arrX, int[] arrY) {
+		if (arrX.length != arrY.length) {
+			System.out.println("Length of arrays is not equal!!!");
+			return;
+		}
+		System.out.println("Your array A:");
+		System.out.println(Arrays.toString(arrX));
+		System.out.println("Your array B:");
+		System.out.println(Arrays.toString(arrY));
+
+		double max = Math.sqrt(Math.pow((arrX[1] - arrX[0]), 2) + Math.pow((arrY[1] - arrY[0]), 2));
+		int indexFirstPoint = 0;
+		int indexSecondPoint = 0;
+
+		for (int i = 0; i < arrX.length; i++) {
+			for (int j = i + 1; j < arrY.length; j++) {
+				System.out.println(i + "\t" + j + "\t"
+						+ Math.sqrt(Math.pow((arrX[j] - arrX[i]), 2) + Math.pow((arrY[j] - arrY[i]), 2)));
+				if (Math.sqrt(Math.pow((arrX[j] - arrX[i]), 2) + Math.pow((arrY[j] - arrY[i]), 2)) > max) {
+					indexFirstPoint = i;
+					indexSecondPoint = j;
+					max = Math.sqrt(Math.pow((arrX[j] - arrX[i]), 2) + Math.pow((arrY[j] - arrY[i]), 2));
+				}
+			}
+		}
+		System.out.println("Result :" + "(" + arrX[indexFirstPoint] + ";" + arrY[indexFirstPoint] + ")" + "("
+				+ arrX[indexSecondPoint] + ";" + arrY[indexSecondPoint] + ")");
+	}
+	
+	public static void task43(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		int min = arr[0];
+		int max = arr[0];
+
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] < min) {
+				min = arr[i];
+			} else if (arr[i] > max) {
+				max = arr[i];
+			} else {
+				continue;
+			}
+		}
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] > min && arr[i] < max) {
+				sum += arr[i];
+			}
+		}
+		System.out.println("Result: " + sum);
+	}
+	
+	public static void task44(double[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		
+		double sum = 0;
+		
+		for (int i = 0; i < arr.length; i++) {
+			sum+=arr[i];
+		}
+		double average = sum/arr.length;
+		System.out.println(average);
+		System.out.println("Result: ");
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] > average) {
+				System.out.print(arr[i]+" ");
+			}
+		}
+	}
+	
+	public static void task45(int[] arr, int k) {
+		if (k < 0 || k>9) {
+			System.out.println("The second parameter is not a digit!!!");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		int count = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i]%10==k) {
+				count++;
+			}
+		}
+		int[] result = new int[count];
+		int j =0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i]%10==k) {
+				result[j]=arr[i];
+				j++;
+			}
+		}
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(result));
+	}
+
+	public static void task46(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		Arrays.sort(arr);
+
+		System.out.println("Result:");
+		int i = 0;
+		do {
+			if (arr[i]!=arr[i+1]) {
+				for (int j = arr[i]+1; j < arr[i+1]; j++) {
+					System.out.print(j+" ");
+				}
+			}
+			i++;
+		} while (arr[i]<arr[arr.length-1]);
+	}
+
+	public static void task47(double[] arr, double x) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		double min = Math.abs((double)(arr[0]+arr[1])/2 - x);
+		int firstPoint = 0;
+		int secondPoint = 1;
+		for (int i = 0; i < arr.length - 1; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				System.out.println(arr[i] + " " + arr[j] +" "+Math.abs((double)(arr[i]+arr[j])/2 - x));
+				if (Math.abs((double)(arr[i]+arr[j])/2 - x)<min) {
+					min = (arr[i]+arr[j])/2 - x;
+					firstPoint = i;
+					secondPoint = j;
+				}
+			}
+		}
+		System.out.println("Result: " + arr[firstPoint] + " " + arr[secondPoint]);
+	}
+	
+	
+	public static void task48(int[]arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		
+		System.out.println("Result: ");
+		for (int i = 0; i < arr.length; i++) {
+			int element = arr[i];
+			int count = 0;
+			for (int j = 0; j < arr.length; j++) {
+				if (arr[j] == element) {
+					count++;
+					if (count>1) {
+						break;
+					}
+				}
+			}
+			if (count == 1) {
+				System.out.print(element + " ");
+			}
+		}
+	}
+	public static void task49(int[]arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i]<0||arr[i]>80) {
+				System.out.println("Incorrect age!!!0<=age<=80");
+			}
+		}
+		int min = 0;
+		int max = 10;
+		int count;
+		System.out.println("Result: ");
+		do {
+			System.out.println("Interval: " + "["+min + ";" + max+"]");
+			count = 0;
+			for (int i = 0; i < arr.length; i++) {
+				if (arr[i]>=min&&arr[i]<max) {
+					count++;
+				}
+			}
+			System.out.println("Count:" + count);
+			min+=10;
+			max+=10;
+		} while (min < 80);
+	}
+	
+	public static void task50(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		
+		int[] result = new int[arr.length];
+		int countZero = 0;
+		int countNegative = 0;
+		
+		for (int i = 0; i < result.length; i++) {
+			if (arr[i]<0) {
+				countNegative++;
+			}else if (arr[i]>0) {
+				continue;
+			}else {
+				countZero++;
+			}
+		}
+		int indexNegative = 0;
+		int indexZero = countNegative;
+		int indexPositive = countNegative+countZero;
+		for (int i = 0; i < result.length; i++) {
+			if (arr[i]<0) {
+				result[indexNegative++] = arr[i];
+			}else if (arr[i]>0) {
+				result[indexPositive++] = arr[i];
+			}else {
+				result[indexZero++] = arr[i];
+			}
+		}
+		System.out.println("Result: ");
+		System.out.println(Arrays.toString(result));
+	}
 }
