@@ -1,4 +1,5 @@
 package main;
+import java.util.Arrays;
 import java.util.Random;
 
 import arrays.OneDimensionalArrays;
@@ -58,8 +59,20 @@ public class Main {
 		//OneDimensionalArrays.task47(randomDoubleArray(10, 0, 100), 50);
 		//OneDimensionalArrays.task48(randomIntegerArray(10, -10, 10));
 		//OneDimensionalArrays.task49(randomIntegerArray(100, 0, 80));
-		OneDimensionalArrays.task50(randomIntegerArray(20, -20, 20));
-	
+		//OneDimensionalArrays.task50(randomIntegerArray(20, -20, 20));
+		//OneDimensionalArrays.task51(randomIntegerArray(20, -20, 20));
+		//OneDimensionalArrays.task52(randomIntegerArray(10, -10, 10), 1);
+		//OneDimensionalArrays.task53(new int[] {0,1,1,1,1,0,2,3,1,2,3,4,5,3,0,0,2,1,2,3,4,3});
+		//OneDimensionalArrays.task54(new int[]{0,1,1,1,1,0,2,3,1,2,3,4,5,3,0,0,2,1,2,3,4,3});
+		//OneDimensionalArrays.task55(randomIntegerArray(20, -20, 20));
+		//OneDimensionalArrays.task56(randomIntegerArray(10, -10, 10));
+		//OneDimensionalArrays.task57(randomIntegerArray(10, -10, 10));
+		//OneDimensionalArrays.task58(randomIntegerArray(20, 1000, 9999));
+		//OneDimensionalArrays.task59(randomIntegerArray(20, -10, 10), randomIntegerArray(25, -20, 10));
+		//OneDimensionalArrays.task60(randomIntegerArray(10, -20, 20),randomIntegerArray(10, -20, 20));
+		
+
+		
 		
 	}
 	

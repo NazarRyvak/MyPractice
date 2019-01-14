@@ -931,24 +931,24 @@ public class OneDimensionalArrays {
 	public static void task44(double[] arr) {
 		System.out.println("Your array:");
 		System.out.println(Arrays.toString(arr));
-		
+
 		double sum = 0;
-		
+
 		for (int i = 0; i < arr.length; i++) {
-			sum+=arr[i];
+			sum += arr[i];
 		}
-		double average = sum/arr.length;
+		double average = sum / arr.length;
 		System.out.println(average);
 		System.out.println("Result: ");
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] > average) {
-				System.out.print(arr[i]+" ");
+				System.out.print(arr[i] + " ");
 			}
 		}
 	}
 	
 	public static void task45(int[] arr, int k) {
-		if (k < 0 || k>9) {
+		if (k < 0 || k > 9) {
 			System.out.println("The second parameter is not a digit!!!");
 			return;
 		}
@@ -957,15 +957,15 @@ public class OneDimensionalArrays {
 
 		int count = 0;
 		for (int i = 0; i < arr.length; i++) {
-			if (arr[i]%10==k) {
+			if (arr[i] % 10 == k) {
 				count++;
 			}
 		}
 		int[] result = new int[count];
-		int j =0;
+		int j = 0;
 		for (int i = 0; i < arr.length; i++) {
-			if (arr[i]%10==k) {
-				result[j]=arr[i];
+			if (arr[i] % 10 == k) {
+				result[j] = arr[i];
 				j++;
 			}
 		}
@@ -981,27 +981,27 @@ public class OneDimensionalArrays {
 		System.out.println("Result:");
 		int i = 0;
 		do {
-			if (arr[i]!=arr[i+1]) {
-				for (int j = arr[i]+1; j < arr[i+1]; j++) {
-					System.out.print(j+" ");
+			if (arr[i] != arr[i + 1]) {
+				for (int j = arr[i] + 1; j < arr[i + 1]; j++) {
+					System.out.print(j + " ");
 				}
 			}
 			i++;
-		} while (arr[i]<arr[arr.length-1]);
+		} while (arr[i] < arr[arr.length - 1]);
 	}
 
 	public static void task47(double[] arr, double x) {
 		System.out.println("Your array:");
 		System.out.println(Arrays.toString(arr));
 
-		double min = Math.abs((double)(arr[0]+arr[1])/2 - x);
+		double min = Math.abs((double) (arr[0] + arr[1]) / 2 - x);
 		int firstPoint = 0;
 		int secondPoint = 1;
 		for (int i = 0; i < arr.length - 1; i++) {
 			for (int j = i + 1; j < arr.length; j++) {
-				System.out.println(arr[i] + " " + arr[j] +" "+Math.abs((double)(arr[i]+arr[j])/2 - x));
-				if (Math.abs((double)(arr[i]+arr[j])/2 - x)<min) {
-					min = (arr[i]+arr[j])/2 - x;
+				System.out.println(arr[i] + " " + arr[j] + " " + Math.abs((double) (arr[i] + arr[j]) / 2 - x));
+				if (Math.abs((double) (arr[i] + arr[j]) / 2 - x) < min) {
+					min = (arr[i] + arr[j]) / 2 - x;
 					firstPoint = i;
 					secondPoint = j;
 				}
@@ -1011,10 +1011,10 @@ public class OneDimensionalArrays {
 	}
 	
 	
-	public static void task48(int[]arr) {
+	public static void task48(int[] arr) {
 		System.out.println("Your array:");
 		System.out.println(Arrays.toString(arr));
-		
+
 		System.out.println("Result: ");
 		for (int i = 0; i < arr.length; i++) {
 			int element = arr[i];
@@ -1022,7 +1022,7 @@ public class OneDimensionalArrays {
 			for (int j = 0; j < arr.length; j++) {
 				if (arr[j] == element) {
 					count++;
-					if (count>1) {
+					if (count > 1) {
 						break;
 					}
 				}
@@ -1032,13 +1032,15 @@ public class OneDimensionalArrays {
 			}
 		}
 	}
-	public static void task49(int[]arr) {
+
+	public static void task49(int[] arr) {
 		System.out.println("Your array:");
 		System.out.println(Arrays.toString(arr));
-		
+
 		for (int i = 0; i < arr.length; i++) {
-			if (arr[i]<0||arr[i]>80) {
+			if (arr[i] < 0 || arr[i] > 80) {
 				System.out.println("Incorrect age!!!0<=age<=80");
+				return;
 			}
 		}
 		int min = 0;
@@ -1046,49 +1048,446 @@ public class OneDimensionalArrays {
 		int count;
 		System.out.println("Result: ");
 		do {
-			System.out.println("Interval: " + "["+min + ";" + max+"]");
+			System.out.println("Interval: " + "[" + min + ";" + max + "]");
 			count = 0;
 			for (int i = 0; i < arr.length; i++) {
-				if (arr[i]>=min&&arr[i]<max) {
+				if (arr[i] >= min && arr[i] < max) {
 					count++;
 				}
 			}
 			System.out.println("Count:" + count);
-			min+=10;
-			max+=10;
+			min += 10;
+			max += 10;
 		} while (min < 80);
 	}
 	
 	public static void task50(int[] arr) {
 		System.out.println("Your array:");
 		System.out.println(Arrays.toString(arr));
-		
+
 		int[] result = new int[arr.length];
 		int countZero = 0;
 		int countNegative = 0;
-		
+
 		for (int i = 0; i < result.length; i++) {
-			if (arr[i]<0) {
+			if (arr[i] < 0) {
 				countNegative++;
-			}else if (arr[i]>0) {
+			} else if (arr[i] > 0) {
 				continue;
-			}else {
+			} else {
 				countZero++;
 			}
 		}
 		int indexNegative = 0;
 		int indexZero = countNegative;
-		int indexPositive = countNegative+countZero;
+		int indexPositive = countNegative + countZero;
 		for (int i = 0; i < result.length; i++) {
-			if (arr[i]<0) {
+			if (arr[i] < 0) {
 				result[indexNegative++] = arr[i];
-			}else if (arr[i]>0) {
+			} else if (arr[i] > 0) {
 				result[indexPositive++] = arr[i];
-			}else {
+			} else {
 				result[indexZero++] = arr[i];
 			}
 		}
 		System.out.println("Result: ");
 		System.out.println(Arrays.toString(result));
+	}
+	
+	public static void task51(int[] arr) {
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!The length of array should be even number!!!");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		double minRadius = Math.sqrt(Math.pow(arr[0], 2) + Math.pow(arr[1], 2));
+
+		for (int i = 0; i < arr.length; i = i + 2) {
+			System.out.println(arr[i] + " " + arr[i + 1] + " " + Math.sqrt(Math.pow(arr[i], 2) + Math.pow(arr[i + 1], 2)));
+			if (Math.sqrt(Math.pow(arr[i], 2) + Math.pow(arr[i + 1], 2)) > minRadius) {
+				minRadius = Math.sqrt(Math.pow(arr[i], 2) + Math.pow(arr[i + 1], 2));
+			}
+		}
+		System.out.println("Result: " + minRadius);
+	}
+	
+	public static void task52(int[] arr, double step) {
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!The length of array should be even number!!!");
+			return;
+		}
+		if (step <= 0) {
+			System.out.println();
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		double minRadius = Math.sqrt(Math.pow(arr[0], 2) + Math.pow(arr[1], 2));
+
+		for (int i = 0; i < arr.length; i = i + 2) {
+			if (Math.sqrt(Math.pow(arr[i], 2) + Math.pow(arr[i + 1], 2)) > minRadius) {
+				minRadius = Math.sqrt(Math.pow(arr[i], 2) + Math.pow(arr[i + 1], 2));
+			}
+		}
+
+		System.out.println("Result:");
+		double x = 0;
+		double y;
+		while (true) {
+			y = Math.sqrt(minRadius * minRadius - x * x);
+			System.out.println("(" + x + ";" + y + ")");
+			x = x + step;
+			if (x > minRadius) {
+				System.out.println("(" + minRadius + ";0)");
+				break;
+			}
+
+		}
+		y = 0 - step;
+		while (true) {
+			x = Math.sqrt(minRadius * minRadius - y * y);
+			System.out.println("(" + x + ";" + y + ")");
+			y = y - step;
+			if (y < -minRadius) {
+				System.out.println("(0;" + (-minRadius) + ")");
+				break;
+			}
+
+		}
+		x = 0 - step;
+		while (true) {
+			y = Math.sqrt(minRadius * minRadius - x * x);
+			System.out.println("(" + x + ";" + y + ")");
+			x = x - step;
+			if (x < -minRadius) {
+				System.out.println("(" + (-minRadius) + ";0)");
+				break;
+			}
+
+		}
+		y = 0 + step;
+		while (true) {
+			x = Math.sqrt(minRadius * minRadius - y * y);
+			System.out.println("(" + x + ";" + y + ")");
+			y = y + step;
+			if (y > minRadius) {
+				System.out.println("(0;" + minRadius + ")");
+				break;
+			}
+
+		}
+	}
+	//begin task 53
+	public static void task53(int[] arr) {
+		// The solution with use only one dimensional arrays
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!The length of array should be even number!!!");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		System.out.println("Result: ");
+		int[] result = null;
+		for (int i = 0; i < arr.length; i = i + 2) {
+			double[] distanceBetweenPoints = new double[arr.length / 2];
+			int indexDistance = 0;
+			// all possible distance
+			for (int j = 0; j < arr.length; j = j + 2) {
+				distanceBetweenPoints[indexDistance++] = Math
+						.sqrt(Math.pow(arr[j] - arr[i], 2) + Math.pow(arr[j + 1] - arr[i + 1], 2));
+			}
+			// is distance
+			result = findFourPoints(distanceBetweenPoints, arr, i / 2);
+			if (result != null) {
+				break;
+			}
+		}
+		if (result == null) {
+			System.out.println("There is not square!!!");
+		} else {
+			System.out.println("(" + result[0] + ";" + result[1] + ")\t" + "(" + result[2] + ";" + result[3] + ")\t"
+					+ "(" + result[4] + ";" + result[5] + ")\t" + "(" + result[6] + ";" + result[7] + ")\t");
+		}
+	}
+
+	private static int[] findFourPoints(double[] distanceBetweenPoints, int[] arr, int i) {
+		for (int j = 0; j < distanceBetweenPoints.length; j++) {
+			if (distanceBetweenPoints[j] != 0) {
+				double length = distanceBetweenPoints[j];
+				for (int k = j + 1; k < distanceBetweenPoints.length; k++) {
+					if (length == distanceBetweenPoints[k]) {
+						if (isRightAngleBetweenThreePoints(arr[i * 2], arr[i * 2 + 1], arr[j * 2], arr[j * 2 + 1],
+								arr[k * 2], arr[k * 2 + 1])) {
+							// is three possible points, need to find 4 point
+
+							for (int index = 0; index < arr.length; index = index + 2) {
+								// point should not be like the first
+								if (arr[index] != arr[i * 2] && arr[index + 1] != arr[i * 2 + 1]) {
+									if (isFourthPoint(length, arr[index], arr[index + 1], arr[j * 2], arr[j * 2 + 1],
+											arr[k * 2], arr[k * 2 + 1])) {
+										return new int[] { arr[i * 2], arr[i * 2 + 1], arr[j * 2], arr[j * 2 + 1],
+												arr[k * 2], arr[k * 2 + 1], arr[index], arr[index + 1] };
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	private static Boolean isRightAngleBetweenThreePoints(int x1, int y1, int x2, int y2, int x3, int y3) {
+		int vectorOneX = x2 - x1;
+		int vectorOneY = y2 - y1;
+		int vectorTwoX = x3 - x1;
+		int vectorTwoY = y3 - y1;
+		if ((vectorOneX * vectorTwoX + vectorOneY * vectorTwoY) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private static Boolean isFourthPoint(double distance, int x4, int y4, int x2, int y2, int x3, int y3) {
+		if (Math.sqrt(Math.pow(x4 - x2, 2) + Math.pow(y4 - y2, 2)) != distance) {
+			return false;
+		}
+		if (Math.sqrt(Math.pow(x4 - x3, 2) + Math.pow(y4 - y3, 2)) != distance) {
+			return false;
+		}
+		if (!isRightAngleBetweenThreePoints(x4, y4, x2, y2, x3, y3)) {
+			return false;
+		}
+		return true;
+	}
+
+	// end task 53
+
+	// begin task 54
+	public static void task54(int[] arr) {
+		// The solution with use only one dimensional arrays
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!The length of array should be even number!!!");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		System.out.println("Result: ");
+		int[] result = null;
+		for (int i = 0; i < arr.length; i = i + 2) {
+			double[] distanceBetweenPoints = new double[arr.length / 2];
+			int indexDistance = 0;
+			// all possible distance
+			for (int j = 0; j < arr.length; j = j + 2) {
+				distanceBetweenPoints[indexDistance++] = Math
+						.sqrt(Math.pow(arr[j] - arr[i], 2) + Math.pow(arr[j + 1] - arr[i + 1], 2));
+			}
+			// is distance
+			result = findThreePoint(distanceBetweenPoints, arr, i / 2);
+			if (result != null) {
+				break;
+			}
+		}
+		if (result == null) {
+			System.out.println("There is not isosceles triangle!!!");
+		} else {
+			System.out.println("(" + result[0] + ";" + result[1] + ")\t" + "(" + result[2] + ";" + result[3] + ")\t"
+					+ "(" + result[4] + ";" + result[5] + ")\t");
+		}
+	}
+
+	private static int[] findThreePoint(double[] distanceBetweenPoints, int[] arr, int i) {
+		for (int j = 0; j < distanceBetweenPoints.length; j++) {
+			if (distanceBetweenPoints[j] != 0) {
+				double length = distanceBetweenPoints[j];
+				for (int k = j + 1; k < distanceBetweenPoints.length; k++) {
+					if (length == distanceBetweenPoints[k]
+							&& (arr[j * 2] != arr[k * 2] || arr[j * 2 + 1] != arr[k * 2 + 1])) {
+						if (isEqualAngle(arr[i * 2], arr[i * 2 + 1], arr[j * 2], arr[j * 2 + 1], arr[k * 2],
+								arr[k * 2 + 1])) {
+							return new int[] { arr[i * 2], arr[i * 2 + 1], arr[j * 2], arr[j * 2 + 1], arr[k * 2],
+									arr[k * 2 + 1] };
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	private static Boolean isEqualAngle(int x1, int y1, int x2, int y2, int x3, int y3) {
+		int vectorOneX = x2 - x1;
+		int vectorOneY = y2 - y1;
+		int vectorTwoX = x3 - x1;
+		int vectorTwoY = y3 - y1;
+		int vectorThreeX = x3 - x2;
+		int vectorThreeY = y3 - y2;
+		double lengthVectorOne = Math.sqrt(vectorOneX * vectorOneX + vectorOneY * vectorOneY);
+		double lengthVectorTwo = Math.sqrt(vectorTwoX * vectorTwoX + vectorTwoY * vectorTwoY);
+		double lengthVectorThree = Math.sqrt(vectorThreeX * vectorThreeX + vectorThreeY * vectorThreeY);
+		if (Math.abs(
+				(vectorOneX * vectorThreeX + vectorOneY * vectorThreeY) / (lengthVectorOne * lengthVectorThree)) == Math
+						.abs((vectorTwoX * vectorThreeX + vectorTwoY * vectorThreeY)
+								/ (lengthVectorTwo * lengthVectorThree))) {
+			return true;
+		}
+		return false;
+	}
+	//end task 54
+	
+	public static void task55(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		System.out.println("Result: ");
+		System.out.println("index:\telement:");
+		for (int i = 0; i < arr.length; i++) {
+			int element = arr[i];
+			if (element > 0) {
+				boolean isSimple = true;
+				for (int j = 2; j <= Math.sqrt(element); j++) {
+					if (element % j == 0) {
+						isSimple = false;
+						break;
+					}
+				}
+				if (isSimple) {
+					System.out.println(i + "\t" + element);
+				}
+			}
+		}
+	}
+
+	public static void task56(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		int count = 0;
+		for (int i = 0; i < arr.length; i++) {
+			int element = arr[i];
+			if (isUnique(arr, element)) {
+				count++;
+			}
+		}
+		System.out.println("Result: " + count);
+	}
+	
+	public static void task57(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		int count = 0;
+		for (int i = 0; i < arr.length; i++) {
+			int element = arr[i];
+			if (isUnique(arr, element)) {
+				count++;
+			}
+		}
+		int[] result = new int[count];
+		int j = 0;
+		for (int i = 0; i < arr.length; i++) {
+			int element = arr[i];
+			if (isUnique(arr, element)) {
+				result[j] = element;
+				j++;
+			}
+		}
+		System.out.println("Result: ");
+		System.out.println(Arrays.toString(result));
+	}
+
+	// for task 56 and 57
+	private static Boolean isUnique(int[] arr, int element) {
+		int countOfElement = 0;
+		for (int j = 0; j < arr.length; j++) {
+			if (element == arr[j]) {
+				countOfElement++;
+				if (countOfElement > 1) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	//end
+	
+	public static void task58(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] < 1000 || arr[i] > 9999) {
+				System.out.println("Incorrect data!!!999<element<10000");
+				return;
+			}
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		System.out.println("Result: ");
+		for (int i = 0; i < arr.length; i++) {
+			int element = arr[i];
+			int firstNumber = element / 100;
+			int secontNumber = element % 100;
+			if (sumDigitOfNumber(firstNumber) == sumDigitOfNumber(secontNumber)) {
+				System.out.print(element + " ");
+			}
+		}
+	}
+
+	// for 58 task
+	private static int sumDigitOfNumber(int number) {
+		int sum = 0;
+		do {
+			sum += number % 10;
+			number /= 10;
+		} while (number > 0);
+		return sum;
+	}
+	// end
+	
+	public static void task59(int[] arrA, int[] arrB) {
+		System.out.println("Your array:");
+		System.out.println("A: " + Arrays.toString(arrA));
+		System.out.println("B: " + Arrays.toString(arrB));
+		int length;
+		if (arrA.length < arrB.length) {
+			length = arrA.length;
+		} else {
+			length = arrB.length;
+		}
+		int count = 0;
+		for (int i = 0; i < length; i++) {
+			if (arrA[i] == arrB[i]) {
+				count++;
+			}
+		}
+		System.out.println("Result: " + count);
+	}
+	
+	public static void task60(int[] arrA, int[] arrB) {
+		System.out.println("Your array:");
+		Arrays.sort(arrA);
+		Arrays.sort(arrB);
+		System.out.println("A: " + Arrays.toString(arrA));
+		System.out.println("B: " + Arrays.toString(arrB));
+		System.out.println("Result:");
+		int[] result = new int[arrA.length + arrB.length];
+		int aIndex = 0;
+		int bIndex = 0;
+		while (true) {
+			if (aIndex >= arrA.length) {
+				System.arraycopy(arrB, bIndex, result, aIndex + bIndex, arrB.length - bIndex);
+				System.out.println(Arrays.toString(result));
+				return;
+			}
+			if (bIndex >= arrB.length) {
+				System.arraycopy(arrA, aIndex, result, aIndex + bIndex, arrA.length - aIndex);
+				System.out.println(Arrays.toString(result));
+				return;
+			}
+			if (arrA[aIndex] < arrB[bIndex]) {
+				result[aIndex + bIndex] = arrA[aIndex++];
+			} else {
+				result[aIndex + bIndex] = arrB[bIndex++];
+			}
+		}
 	}
 }
