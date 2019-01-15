@@ -1490,4 +1490,349 @@ public class OneDimensionalArrays {
 			}
 		}
 	}
+	
+	public static void task61(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		//Hah sort
+		Arrays.sort(arr);
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(arr));	
+	}
+	
+	public static void task62(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		int count = 0;
+		int countMax = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == 0) {
+				count++;
+			} else {
+				if (count > countMax) {
+					countMax = count;
+				}
+				count = 0;
+			}
+		}
+		System.out.println("Result: " + countMax);
+	}
+	
+	public static void task63(int[] arr, int m) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		System.out.println("Result:");
+		int sum = 0;
+		int beginIndex = 0;
+		for (int i = beginIndex; i < arr.length; i++) {
+			sum += arr[i];
+			if (sum == m) {
+				for (int j = beginIndex; j <= i; j++) {
+					System.out.print(arr[j] + " ");
+				}
+				System.out.println();
+			}
+			if (i == arr.length - 1) {
+				beginIndex++;
+				i = beginIndex - 1;
+				sum = 0;
+			}
+
+		}
+	}
+	
+	public static void task64(int[] arrX, int[] arrY) {
+		//Wrong condition of the task
+	}
+
+	public static void task65(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		int count = 1;
+		int maxCount = 1;
+
+		for (int i = 0; i < arr.length;) {
+			if (i + 1 < arr.length && arr[i] < arr[i + 1]) {
+				count++;
+				if (i + 2 < arr.length && arr[i + 1] > arr[i + 2]) {
+					count++;
+					i = i + 2;
+				} else {
+					if (count > maxCount) {
+						maxCount = count;
+					}
+					count = 1;
+					i++;
+				}
+			} else {
+				if (count > maxCount) {
+					maxCount = count;
+				}
+				count = 1;
+				i++;
+			}
+		}
+		System.out.println("Result " + maxCount);
+	}
+	
+	public static void task66(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		
+		int indexBegin = 0;
+		int indexEnd = 0;
+		int begin = 0;
+		int end = 0;
+		int maxCount = 0;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i; j < arr.length; j++) {
+				if (arr[i] == arr[j]) {
+					begin = i;
+					end = j;
+					boolean isOk = false;
+					while (true) {
+						if (arr[begin] != arr[end]) {
+							break;
+						}
+						begin++;
+						end--;
+						if (begin > end) {
+							isOk = true;
+							break;
+						}
+					}
+					if (isOk) {
+						if (j - i > maxCount) {
+							maxCount = j- i;
+							indexBegin = i;
+							indexEnd = j;
+						}
+					}
+				}
+			}
+		}
+		System.out.println("Result: ");
+		for (int i = indexBegin; i <= indexEnd; i++) {
+			System.out.print(arr[i] + " ");
+		}
+	}
+	
+	public static void task67Left(int arr[], int k) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		for (int i = 0; i < arr.length; i++) {
+			if (k != arr.length) {
+				arr[i] = arr[k++];
+			} else {
+				arr[i] = 0;
+			}
+		}
+		System.out.println("Result: ");
+		System.out.println(Arrays.toString(arr));
+	}
+
+	public static void task67Rigth(int arr[], int k) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		for (int i = arr.length - 1; i >= 0; i--) {
+			if (k != arr.length) {
+				arr[i] = arr[arr.length - k - 1];
+				k++;
+			} else {
+				arr[i] = 0;
+			}
+		}
+		System.out.println("Result: ");
+		System.out.println(Arrays.toString(arr));
+	}
+
+	// begin task 68
+	public static void task68(int arr[], int radius) {
+		// Can be equal point
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!The length of array should be even number!!!");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		double[] distance = new double[arr.length / 2];
+		int j = 0;
+		int countLessThanRadius = 0;
+		for (int i = 0; i < arr.length; i = i + 2) {
+			distance[j] = Math.sqrt(arr[i] * arr[i] + arr[i + 1] * arr[i + 1]);
+			if (distance[j] < radius) {
+				countLessThanRadius++;
+			}
+			j++;
+		}
+
+		// all points inside the circle
+		int[] pointLessThanRadius = new int[countLessThanRadius * 2];
+		int index = 0;
+		for (int i = 0; i < distance.length; i++) {
+			if (distance[i] < radius) {
+				pointLessThanRadius[index] = arr[i * 2];
+				pointLessThanRadius[index + 1] = arr[i * 2 + 1];
+				index = index + 2;
+			}
+		}
+		System.out.println("The points of triangle inside the circle:");
+		for (int i = 0; i < pointLessThanRadius.length - 4; i = i + 2) {
+			for (int k = i + 2; k < pointLessThanRadius.length - 2; k = k + 2) {
+				for (int m = k + 2; m < pointLessThanRadius.length; m = m + 2) {
+					if (isTriangle(pointLessThanRadius[i], pointLessThanRadius[i + 1], pointLessThanRadius[k],
+							pointLessThanRadius[k + 1], pointLessThanRadius[m], pointLessThanRadius[m + 1])) {
+						System.out.println("(" + pointLessThanRadius[i] + ";" + pointLessThanRadius[i + 1] + ")\t" + "("
+								+ pointLessThanRadius[k] + ";" + pointLessThanRadius[k + 1] + ")\t" + "("
+								+ pointLessThanRadius[m] + ";" + pointLessThanRadius[m + 1] + ")\t");
+					}
+				}
+			}
+		}
+	}
+
+	private static Boolean isTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+		if (isEqualPoint(x1, y1, x2, y2, x3, y3)) {
+			return false;
+		}
+		int vectorOneX = x2 - x1;
+		int vectorOneY = y2 - y1;
+		int vectorTwoX = x3 - x1;
+		int vectorTwoY = y3 - y1;
+
+		double lengthVectorOne = Math.sqrt(vectorOneX * vectorOneX + vectorOneY * vectorOneY);
+		double lengthVectorTwo = Math.sqrt(vectorTwoX * vectorTwoX + vectorTwoY * vectorTwoY);
+		if (Math.abs((vectorOneX * vectorTwoX + vectorOneY * vectorTwoY) / (lengthVectorOne * lengthVectorTwo)) != 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private static Boolean isEqualPoint(int x1, int y1, int x2, int y2, int x3, int y3) {
+		if (((x1 == x2) && (y1 == y2)) || ((x1 == x3) && (y1 == y3)) || ((x2 == x3) && (y2 == y3))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// end task 68
+	public static void task69(int arr[]) {
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!The length of array should be even number!!!");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		double distance = 0;
+		double maxDistance = Double.MIN_VALUE;
+		double minDistance = Double.MAX_VALUE;
+		int[] pointsMin = new int[4];
+		int[] pointsMax = new int[4];
+
+		for (int i = 0; i < arr.length - 2; i = i + 2) {
+			for (int j = i + 2; j < arr.length; j = j + 2) {
+				distance = Math.sqrt(
+						(arr[j] - arr[i]) * (arr[j] - arr[i]) + (arr[j + 1] - arr[i + 1]) * (arr[j + 1] - arr[i + 1]));
+
+				if (distance < minDistance) {
+					minDistance = distance;
+					pointsMin[0] = arr[i];
+					pointsMin[1] = arr[i + 1];
+					pointsMin[2] = arr[j];
+					pointsMin[3] = arr[j + 1];
+				}
+				if (distance > maxDistance) {
+					maxDistance = distance;
+					pointsMax[0] = arr[i];
+					pointsMax[1] = arr[i + 1];
+					pointsMax[2] = arr[j];
+					pointsMax[3] = arr[j + 1];
+				}
+			}
+		}
+		System.out.println("Result: ");
+		System.out.println("Min distance: ");
+		System.out.println(
+				"(" + (pointsMin[0]) + ";" + pointsMin[1] + ")\t" + "(" + (pointsMin[2]) + ";" + pointsMin[3] + ")\t");
+		System.out.println("Max distance: ");
+		System.out.println(
+				"(" + (pointsMax[0]) + ";" + pointsMax[1] + ")\t" + "(" + (pointsMax[2]) + ";" + pointsMax[3] + ")\t");
+	}
+	
+	//begin task 70
+	public static void task70(int arr[]) {
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!The length of array should be even number!!!");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+
+		int[] triangle = new int[6];
+		int countIn = 0;
+		int countOut = 0;
+		int minSubtract = Integer.MAX_VALUE;
+		for (int i = 0; i < arr.length - 4; i = i + 2) {
+			for (int k = i + 2; k < arr.length - 2; k = k + 2) {
+				for (int m = k + 2; m < arr.length; m = m + 2) {
+					if (isTriangle(arr[i], arr[i + 1], arr[k], arr[k + 1], arr[m], arr[m + 1])) {
+						for (int j = 0; j < arr.length; j = j + 2) {
+							if (j != i && j != k && j != m) {
+								if (PointInTriangle(arr[j], arr[j + 1], arr[i], arr[i + 1], arr[k], arr[k + 1], arr[m],
+										arr[m + 1])) {
+									countIn++;
+								}
+							}
+							if (j == arr.length - 2) {
+								countOut = arr.length / 2 - 3 - countIn;
+								if (Math.abs(countOut - countIn) < minSubtract) {
+									minSubtract = Math.abs(countOut - countIn);
+									triangle[0] = arr[i];
+									triangle[1] = arr[i + 1];
+									triangle[2] = arr[k];
+									triangle[3] = arr[k + 1];
+									triangle[4] = arr[m];
+									triangle[5] = arr[m + 1];
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		System.out.println("(" + (arr[0]) + ";" + arr[1] + ")\t" + "(" + (arr[2]) + ";" + arr[3] + ")\t" + "("
+				+ (arr[4]) + ";" + arr[5] + ")\t");
+
+	}
+
+	//barycentric method
+	private static boolean PointInTriangle(int checkPointX, int checkPointY, int x1, int y1, int x2, int y2, int x3,
+			int y3) {
+		 double s = y1 * x3 - x1 * y3 + (y3 - y1) * checkPointX+ (x1 - x3) * checkPointY;
+		 double t = x1 * y2 - y1 * x2 + (y1 - y2) * checkPointX+ (x2 - x1) * checkPointY;
+
+		    if ((s < 0) != (t < 0))
+		        return false;
+
+		    double square = -y2 * x3 + y1 * (x3 - x2) + x1 * (y2 - y3) + x2 * y3;
+		    if (square < 0.0)
+		    {
+		        s = -s;
+		        t = -t;
+		        square = -square;
+		    }
+		    return s > 0 && t > 0 && (s + t) <= square;
+	}
+	//end task 70
+	
+
+	
+	
 }

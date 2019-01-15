@@ -70,7 +70,16 @@ public class Main {
 		//OneDimensionalArrays.task58(randomIntegerArray(20, 1000, 9999));
 		//OneDimensionalArrays.task59(randomIntegerArray(20, -10, 10), randomIntegerArray(25, -20, 10));
 		//OneDimensionalArrays.task60(randomIntegerArray(10, -20, 20),randomIntegerArray(10, -20, 20));
-		
+		//OneDimensionalArrays.task61(randomIntegerArray(10, 0, 2));
+		//OneDimensionalArrays.task62(randomIntegerArray(20, 0, 2));
+		//OneDimensionalArrays.task63(randomIntegerArray(20, -5, 5), 10);
+		//OneDimensionalArrays.task65(randomIntegerArray(10, -5, 5));
+		//OneDimensionalArrays.task66(new int[] {1,2,3,3,4,2,1,1,2,4,3});
+		//OneDimensionalArrays.task67Left(randomIntegerArray(10, -5, 5), 4);
+		//OneDimensionalArrays.task67Rigth(randomIntegerArray(10, -5, 5), 4);
+		//OneDimensionalArrays.task68(new int[] {0,1,1,1,0,0,-1,0,0,0,4,8}, 2);
+		//OneDimensionalArrays.task69(new int[] {0,0,1,1,8,8,7,7});
+		OneDimensionalArrays.task70(new int[] {0,0,1,1,8,8,7,7});
 
 		
 		
