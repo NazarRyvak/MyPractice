@@ -4,6 +4,7 @@ import java.util.Random;
 
 import arrays.OneDimensionalArrays;
 import arrays.SortingArrays;
+import arrays.TwoDimensionalArrays;
 
 
 public class Main {
@@ -125,7 +126,24 @@ public class Main {
 		//System.out.println(Arrays.toString(arr6));
 		
 		//SortingArrays.task77(randomIntegerArray(25, 0, 30), randomIntegerArray(10, -30, 30));
-		SortingArrays.task78(randomIntegerArray(26, 1, 5));
+		//SortingArrays.task78(randomIntegerArray(26, 1, 5));
+		
+		
+		////////////
+		
+		//TwoDimensionalArrays.task80(5);
+		//TwoDimensionalArrays.task81(5);
+		//TwoDimensionalArrays.task82(5);
+		//TwoDimensionalArrays.task83(5);
+		//TwoDimensionalArrays.task84(5);
+		//TwoDimensionalArrays.task85(5);
+		//TwoDimensionalArrays.task86(7);
+		//TwoDimensionalArrays.task87(7);
+		//TwoDimensionalArrays.task88(7);
+		//TwoDimensionalArrays.task89(7);
+		//TwoDimensionalArrays.task90(7);
+		TwoDimensionalArrays.task91(7);
+		
 		
 		
 		
