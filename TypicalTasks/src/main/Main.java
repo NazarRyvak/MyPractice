@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import arrays.OneDimensionalArrays;
+import arrays.SortingArrays;
 
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
 	static Random rd = new Random();
 	
 	public static void main(String[] args) {
+		
 		//OneDimensionalArrays.task1(randomIntegerArray(20, 1, 100), 4);
 		//OneDimensionalArrays.task2(randomIntegerArray(20, -10, 10));
 		//OneDimensionalArrays.task3(randomIntegerArray(20,-10,10));
@@ -79,8 +81,53 @@ public class Main {
 		//OneDimensionalArrays.task67Rigth(randomIntegerArray(10, -5, 5), 4);
 		//OneDimensionalArrays.task68(new int[] {0,1,1,1,0,0,-1,0,0,0,4,8}, 2);
 		//OneDimensionalArrays.task69(new int[] {0,0,1,1,8,8,7,7});
-		OneDimensionalArrays.task70(new int[] {0,0,1,1,8,8,7,7});
+		//OneDimensionalArrays.task70(new int[] {0,0,1,1,8,8,7,7});
 
+		//
+		
+		int[] arr1 = randomIntegerArray(10000, 0, 10000);
+		int[] arr2 = Arrays.copyOf(arr1, arr1.length);
+		int[] arr3 = Arrays.copyOf(arr1, arr1.length);
+		int[] arr6 = Arrays.copyOf(arr1, arr1.length);
+
+		//Merger
+		/*int[] arr4 = randomIntegerArray(10000, 0, 10000);
+		Arrays.sort(arr1);
+		Arrays.sort(arr4);
+		long t1 = System.nanoTime();
+		int[] arr5 = SortingArrays.task72MergeTwoArrays(arr1, arr4);
+		System.out.println("Merge Without Binary Search=" + (double) (System.nanoTime() - t1) / 1000000000.0);
+		*/// System.out.println(Arrays.toString(arr5));
+
+		// Selection
+/*		long t2 = System.nanoTime();
+		SortingArrays.task73Selection(arr1);
+		System.out.println("Selection=" + (double) (System.nanoTime() - t2) / 1000000000.0);*/
+		//System.out.println(Arrays.toString(arr1));
+
+		
+		// Bubble
+/*		long t3= System.nanoTime();
+		SortingArrays.task74BubbleSort(arr2);
+		System.out.println("Bubble=" + (double) (System.nanoTime() - t3) / 1000000000.0);*/
+		//System.out.println(Arrays.toString(arr2));
+
+		// InsertionWithBinarySearch
+/*		long t4 = System.nanoTime();
+		SortingArrays.task75InsertionSort(arr3);
+		System.out.println("Insertion With Binary Search=" + (double) (System.nanoTime() - t4) / 1000000000.0);*/
+		//System.out.println(Arrays.toString(arr3));
+		
+		//Shell
+		/*long t5 = System.nanoTime();
+		SortingArrays.task76Shell(arr6);
+		System.out.println("Shell=" + (double) (System.nanoTime() - t5) / 1000000000.0);*/
+		//System.out.println(Arrays.toString(arr6));
+		
+		//SortingArrays.task77(randomIntegerArray(25, 0, 30), randomIntegerArray(10, -30, 30));
+		SortingArrays.task78(randomIntegerArray(26, 1, 5));
+		
+		
 		
 		
 	}
