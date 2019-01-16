@@ -142,8 +142,19 @@ public class Main {
 		//TwoDimensionalArrays.task88(7);
 		//TwoDimensionalArrays.task89(7);
 		//TwoDimensionalArrays.task90(7);
-		TwoDimensionalArrays.task91(7);
-		
+		//TwoDimensionalArrays.task91(8);
+		//TwoDimensionalArrays.task92(4);
+		//TwoDimensionalArrays.task93(4,2);
+		//TwoDimensionalArrays.task94(new int[] {1,2,3,4,5,6,7,8});
+		//TwoDimensionalArrays.task95(10);
+		//TwoDimensionalArrays.task96(5);
+		//TwoDimensionalArrays.task97(5);
+		//TwoDimensionalArrays.task98(randomIntegerArray2D(4, 4, 0, 9));
+		//TwoDimensionalArrays.task99(randomIntegerArray2D(4, 5, 0, 9));
+		//TwoDimensionalArrays.task100(new int[]{1,2,3,4,5,6});
+		//TwoDimensionalArrays.task101(new int[]{0,1,2,3,4,5,6});
+		//TwoDimensionalArrays.task102(5);
+		//TwoDimensionalArrays.task103(5);
 		
 		
 		
@@ -155,6 +166,16 @@ public class Main {
 		
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = min + rd.nextInt(max - min + 1);
+		}
+		return arr;
+	}
+	static int[][] randomIntegerArray2D(int n,int m, int min, int max) {
+		int[][] arr = new int[n][m];
+		
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				arr[i][j] = min + rd.nextInt(max - min + 1);
+			}
 		}
 		return arr;
 	}
