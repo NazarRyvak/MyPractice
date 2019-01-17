@@ -161,7 +161,17 @@ public class Main {
 		//TwoDimensionalArrays.task108(randomIntegerArray2D(4, 4, -20, 20));
 		//TwoDimensionalArrays.task109(new int[][] {{2,7,6},{9,5,1},{4,3,8}});
 		//TwoDimensionalArrays.task110(randomIntegerArray2D(4, 4, -20, 20));
-		TwoDimensionalArrays.task110(new int[][] {{5,10,8},{1,11,0},{2,18,6}});
+		//TwoDimensionalArrays.task110(new int[][] {{5,10,8},{1,11,0},{2,18,6}});
+		//TwoDimensionalArrays.task111(randomIntegerArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task112(randomIntegerArray2D(5, 5, 0, 1));
+		//TwoDimensionalArrays.task113(randomIntegerArray2D(5, 5, -10, 10));
+		//TwoDimensionalArrays.task114(randomIntegerArray2D(5, 5, -10, 10));
+		//TwoDimensionalArrays.task115(randomIntegerArray2D(5, 5, -200, 200),2);
+		//TwoDimensionalArrays.task116(randomIntegerArray2D(5, 5, -200, 200));
+		//TwoDimensionalArrays.task117(randomIntegerArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task118(randomIntegerArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task119(randomDoubleArray2D(5, 5, -20, 20));
+		TwoDimensionalArrays.task120(randomIntegerArray2D(5, 5, -20, 20));
 		
 		
 		
@@ -199,6 +209,22 @@ public class Main {
 			} else {
 				arr[i] = arr[i] - (double) rd.nextInt(100) / 100;
 			}
+		}
+		return arr;
+	}
+	static double[][] randomDoubleArray2D(int n,int m, int min, int max) {
+		double[][] arr = new double[n][m];
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				arr[i][j] = min + rd.nextInt(max - min + 1);
+				if (arr[i][j] <= 0) {
+					arr[i][j] = arr[i][j] + (double) rd.nextInt(100) / 100;
+				} else {
+					arr[i][j] = arr[i][j] - (double) rd.nextInt(100) / 100;
+				}
+			}
+			
 		}
 		return arr;
 	}
