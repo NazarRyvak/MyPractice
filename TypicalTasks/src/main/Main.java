@@ -155,6 +155,15 @@ public class Main {
 		//TwoDimensionalArrays.task101(new int[]{0,1,2,3,4,5,6});
 		//TwoDimensionalArrays.task102(5);
 		//TwoDimensionalArrays.task103(5);
+		//TwoDimensionalArrays.task105(randomIntegerArray2D(4, 4, -9, 9));
+		//TwoDimensionalArrays.task106(randomIntegerArray2D(4, 4, -20, 20));
+		//TwoDimensionalArrays.task107(randomIntegerArray2D(4, 4, -20, 20),4);
+		//TwoDimensionalArrays.task108(randomIntegerArray2D(4, 4, -20, 20));
+		//TwoDimensionalArrays.task109(new int[][] {{2,7,6},{9,5,1},{4,3,8}});
+		//TwoDimensionalArrays.task110(randomIntegerArray2D(4, 4, -20, 20));
+		TwoDimensionalArrays.task110(new int[][] {{5,10,8},{1,11,0},{2,18,6}});
+		
+		
 		
 		
 		

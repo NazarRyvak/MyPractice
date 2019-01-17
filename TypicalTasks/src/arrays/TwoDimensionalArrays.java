@@ -408,6 +408,210 @@ public class TwoDimensionalArrays {
 		printTwoDimensionalArray(arr);
 	}
 	
+	public static void task104(int[][] arr) {
+
+	}
+
+	public static void task105(int[][] arr) {
+		if (arr.length != arr[0].length) {
+			System.out.println("Incorrect data!!!The matrix is not square matrix");
+			return;
+		}
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int sum = 0;
+		int count = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[i][j] > 0) {
+					sum += arr[i][j];
+					count++;
+				}
+			}
+		}
+		System.out.println("Count: " + count);
+		System.out.println("Sum: " + sum);
+
+	}
+
+	public static void task106(int[][] arr) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int sum = 0;
+		int count = 0;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length; j++) {
+				sum += arr[i][j];
+			}
+			System.out.println("Sum of " + i + "row = " + sum);
+			for (int j = 0; j < arr.length; j++) {
+				if (arr[i][j] > sum) {
+					count++;
+				}
+			}
+			sum = 0;
+		}
+		System.out.println("Count: " + count);
+	}
+
+	public static void task107(int[][] arr, int m) {
+		if (arr.length != arr[0].length) {
+			System.out.println("Incorrect data!!!The matrix is not square matrix");
+			return;
+		}
+		if (m >= arr.length) {
+			System.out.println("Incorrect data!!!Your row is bigger than size - 1");
+			return;
+		}
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int row = 0;
+		int max = arr[0][0];
+
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i][i] > max) {
+				max = arr[i][i];
+				row = i;
+			}
+		}
+		swapRowInMatrix(arr, row, m);
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+	}
+
+	private static void swapRowInMatrix(int[][] arr, int row1, int row2) {
+		int[] temp = new int[arr.length];
+		for (int j = 0; j < temp.length; j++) {
+			temp[j] = arr[row1][j];
+		}
+		for (int j = 0; j < temp.length; j++) {
+			arr[row1][j] = arr[row2][j];
+		}
+		for (int j = 0; j < temp.length; j++) {
+			arr[row2][j] = temp[j];
+		}
+	}
+
+	public static void task108(int[][] arr) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int max = Integer.MIN_VALUE;
+		int indexColumnMax = 0;
+		int min = Integer.MAX_VALUE;
+		int indexColumnMin = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length; j++) {
+				if (arr[i][j] > max) {
+					max = arr[i][j];
+					indexColumnMax = j;
+				}
+				if (arr[i][j] < min) {
+					min = arr[i][j];
+					indexColumnMin = j;
+				}
+			}
+			swap(arr, i, 0, i, indexColumnMin);
+			swap(arr, i, arr[0].length - 1, i, indexColumnMax);
+			max = Integer.MIN_VALUE;
+			min = Integer.MAX_VALUE;
+		}
+
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+	}
+
+	private static void swap(int[][] arr, int i1, int j1, int i2, int j2) {
+		int temp = arr[i1][j1];
+		arr[i1][j1] = arr[i2][j2];
+		arr[i2][j2] = temp;
+
+	}
+
+	public static void task109(int[][] arr) {
+		if (arr.length != arr[0].length) {
+			System.out.println("Incorrect data!!!The matrix is not square matrix");
+			return;
+		}
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		// Sum elements in magic square
+		int sum = arr.length * (arr.length * arr.length + 1) / 2;
+		int checkSum = 0;
+
+		// Row
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length; j++) {
+				checkSum += arr[i][j];
+			}
+			if (checkSum != sum) {
+				System.out.println("False!!!");
+				return;
+			}
+			checkSum = 0;
+		}
+
+		// Column
+		for (int j = 0; j < arr.length; j++) {
+			for (int i = 0; i < arr.length; i++) {
+				checkSum += arr[i][j];
+			}
+			if (checkSum != sum) {
+				System.out.println("False!!!");
+				return;
+			}
+			checkSum = 0;
+		}
+
+		System.out.println("True!!! ");
+	}
+
+	public static void task110(int[][] arr) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+
+		System.out.println("Result:");
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length; j++) {
+				if (isPointSaddle(arr, i, j)) {
+					System.out.println("[" + i + ";" + j + "] = " + arr[i][j]);
+				}
+			}
+		}
+	}
+
+	private static boolean isPointSaddle(int[][] arr, int x, int y) {
+		int min = Integer.MAX_VALUE;
+		int max = Integer.MIN_VALUE;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[x][i] < min) {
+				min = arr[x][i];
+			}
+			if (arr[i][y] > max) {
+				max = arr[i][y];
+			}
+		}
+		if (arr[x][y] == min && arr[x][y] == max) {
+			return true;
+		}
+		min = Integer.MAX_VALUE;
+		max = Integer.MIN_VALUE;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[x][i] > max) {
+				max = arr[x][i];
+			}
+			if (arr[i][y] < min) {
+				min = arr[i][y];
+			}
+		}
+		if (arr[x][y] == min && arr[x][y] == max) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 	
 	
 	
