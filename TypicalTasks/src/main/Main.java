@@ -171,10 +171,17 @@ public class Main {
 		//TwoDimensionalArrays.task117(randomIntegerArray2D(5, 5, -20, 20));
 		//TwoDimensionalArrays.task118(randomIntegerArray2D(5, 5, -20, 20));
 		//TwoDimensionalArrays.task119(randomDoubleArray2D(5, 5, -20, 20));
-		TwoDimensionalArrays.task120(randomIntegerArray2D(5, 5, -20, 20));
-		
-		
-		
+		//TwoDimensionalArrays.task120(randomIntegerArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task121(randomIntegerArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task122(randomDoubleArray2D(5, 5, -20, 20),2);
+		//TwoDimensionalArrays.task123(randomIntegerArray2D(5, 5, -200, 200),3);
+		//TwoDimensionalArrays.task124(randomIntegerArray2D(5, 5, -200, 200));
+		//TwoDimensionalArrays.task125(randomIntegerArray2D(5, 5, -200, 200));
+		//TwoDimensionalArrays.task126(randomIntegerArray2D(5, 5, -200, 200));
+		//TwoDimensionalArrays.task127(randomDoubleArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task128(randomIntegerArray2D(5, 5, -20, 20),2);
+		//TwoDimensionalArrays.task129(randomIntegerArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task130(randomIntegerArray2D(6, 3, 0, 1), randomIntegerArray(3, 0, 1));
 		
 		
 		
