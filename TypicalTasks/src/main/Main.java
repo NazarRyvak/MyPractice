@@ -182,8 +182,15 @@ public class Main {
 		//TwoDimensionalArrays.task128(randomIntegerArray2D(5, 5, -20, 20),2);
 		//TwoDimensionalArrays.task129(randomIntegerArray2D(5, 5, -20, 20));
 		//TwoDimensionalArrays.task130(randomIntegerArray2D(6, 3, 0, 1), randomIntegerArray(3, 0, 1));
-		
-		
+		//TwoDimensionalArrays.task131(randomIntegerArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task132(randomIntegerArray2D(5, 5, -20, 20),0);
+		//TwoDimensionalArrays.task133(randomIntegerArray2D(5, 5, -20, 20),10,2);
+		//TwoDimensionalArrays.task134(randomIntegerArray2D(5, 4, -20, 20));
+		//TwoDimensionalArrays.task135(randomIntegerArray2D(5, 5, -20, 20),2);
+		//TwoDimensionalArrays.task136(randomIntegerArray2D(5, 5, -20, 20));
+		//TwoDimensionalArrays.task137(new int[][]{{1,3,5,11},{5,11,1,3}});
+		//TwoDimensionalArrays.task138(randomIntegerArray2D(5, 5, 0, 2));
+		TwoDimensionalArrays.task139(randomIntegerArray2D(5, 5, -10, 10));
 		
 	}
 	

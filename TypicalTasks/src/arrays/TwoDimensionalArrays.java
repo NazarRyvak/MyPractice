@@ -1,6 +1,7 @@
 package arrays;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class TwoDimensionalArrays {
 
@@ -1122,7 +1123,7 @@ public class TwoDimensionalArrays {
 		System.out.println("Your 1D-array: ");
 		System.out.println(Arrays.toString(arr1D));
 		System.out.println();
-		for (int i = 0; i < arr.length - 1; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[0].length; j++) {
 				if (arr[i][j] != arr1D[j]) {
 					break;
@@ -1134,6 +1135,231 @@ public class TwoDimensionalArrays {
 		}
 	}
 	
+	public static void task131(int[][] arr) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int min = Integer.MAX_VALUE;
+		System.out.println();
+		for (int i = 0; i < arr.length; i = i + 2) {
+			for (int j = 0; j < arr[0].length; j++) {
+				if (min > arr[i][j]) {
+					min = arr[i][j];
+				}
+			}
+			System.out.println("For i = " + i + " Min = " + min);
+			min = Integer.MAX_VALUE;
+		}
+	}
+	
+	public static void task132(int[][] arr, int k) {
+		if (k >= arr.length) {
+			System.out.println("Incorrect data!!!Your row is bigger than size - 1");
+			return;
+		}
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int min = Integer.MAX_VALUE;
+		int minIndexJ = 0;
+		int iteration = 0;
+		do {
+			for (int j = iteration; j < arr[0].length; j++) {
+				if (arr[k][j] < min) {
+					min = arr[k][j];
+					minIndexJ = j;
+				}
+			}
+			swapColumnInMatrix(arr, iteration, minIndexJ);
+			min = Integer.MAX_VALUE;
+			iteration++;
+		} while (iteration < arr[0].length - 1);
+		System.out.println("Result: ");
+		printTwoDimensionalArray(arr);
+	}
+	
+	public static void task133(int[][] arr, int c, int d) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int min = Integer.MAX_VALUE;
+		System.out.println();
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				if (arr[i][j] ==c) {
+					System.out.println("Row ¹" + i + " contains element: "+ c);
+					for (int k = 0; k < arr[0].length; k++) {
+						arr[i][k]*=d;
+					}
+					break;
+				}
+			}
+		}
+		System.out.println("Result: ");
+		printTwoDimensionalArray(arr);
+	}
+	
+	public static void task134(int[][] arr) {
+		if (arr[0].length % 4 != 0) {
+			System.out.println("Incorrect data!!!M does not divide by 4!!!");
+			return;
+		}
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int sum = 0;
+		for (int j = 0; j < arr[0].length / 2; j++) {
+			for (int i = 0; i < arr.length; i++) {
+				sum += arr[i][j];
+			}
+			System.out.println("Sum of column ¹" + j + " = " + sum);
+			sum = 0;
+		}
+		for (int i = 0; i < arr.length; i = i + 2) {
+			for (int j = arr.length / 2; j < arr[0].length; j++) {
+				sum += arr[i][j];
+			}
+			System.out.println("Sum of row ¹" + i + " from " + arr.length / 2 + " column is " + sum);
+			sum = 0;
+		}
+	}
+	
+	public static void task135(int[][] arr, int k) {
+		if (arr.length != arr[0].length) {
+			System.out.println("Incorrect data!!!The matrix is not square matrix");
+			return;
+		}
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int count = 0;
+		int[] temp = new int[arr.length];
+		int sum = 0;
+		boolean isOk = true;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				if (arr[i][j] < 0 && j < k) {
+					isOk = false;
+					break;
+				}
+				sum += arr[i][j];
+			}
+			if (isOk) {
+				temp[count++] = sum;
+			}
+			sum = 0;
+			isOk = true;
+		}
+		int[] result = new int[count];
+		for (int i = 0; i < result.length; i++) {
+			result[i] = temp[i];
+		}
+		System.out.println("Result: ");
+		System.out.println(Arrays.toString(result));
+	}
+	
+	public static void task136(int[][] arr) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+
+		int min = Integer.MAX_VALUE;
+		int maxI = 0;
+		int max = Integer.MIN_VALUE;
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				if (arr[i][j] < min) {
+					min = arr[i][j];
+				}
+			}
+			if (min > max) {
+				max = min;
+				maxI = i;
+			}
+			min = Integer.MAX_VALUE;
+		}
+		System.out.println("Result: Row ¹" + maxI);
+		for (int j = 0; j < arr[0].length; j++) {
+			System.out.print(arr[maxI][j] + "\t");
+		}
+	}
+
+	public static void task137(int[][] arr) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int count = 0;
+		for (int i = 0; i < arr.length - 1; i++) {
+			for (int j = 0; j < arr[0].length - 1; j++) {
+				if (arr[i][j] == arr[i][j + 1] || arr[i + 1][j] == arr[i + 1][j + 1]) {
+					continue;
+				} else if (arr[i][j] == arr[i + 1][j] || arr[i][j + 1] == arr[i + 1][j + 1]) {
+					continue;
+				} else if (arr[i][j] == arr[i + 1][j + 1] || arr[i + 1][j] == arr[i][j + 1]) {
+					continue;
+				} else {
+					count++;
+				}
+			}
+		}
+		System.out.println("Result: " + count);
+	}
+	
+	public static void task138(int[][] arr) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+		int[] temp = new int[arr[0].length];
+		for (int j = 0; j < temp.length; j++) {
+			temp[j] = arr[0][j];
+		}
+		int[] arr1D = IntStream.of(temp).distinct().toArray();
+
+		boolean isOk = false;
+		int index = 0;
+		System.out.println("Result: ");
+		do {
+			for (int i = 1; i < arr.length; i++) {
+				for (int j = 0; j < arr.length; j++) {
+					if (arr[i][j] == arr1D[index]) {
+						isOk = true;
+					}
+				}
+				if (isOk) {
+					continue;
+				} else {
+					isOk = false;
+					break;
+				}
+			}
+			if (isOk) {
+				System.out.print(arr1D[index] + "\t");
+			}
+			isOk = false;
+			index++;
+		} while (index < arr1D.length);
+	}
+	
+	public static void task139(int[][] arr) {
+		System.out.println("Your array: ");
+		printTwoDimensionalArray(arr);
+
+		boolean[][] temp = new boolean[arr.length][arr[0].length];
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				if (arr[i][j] == 0) {
+					temp[i][j] = true;
+				}
+			}
+		}
+		for (int i = 0; i < temp.length; i++) {
+			for (int j = 0; j < temp[0].length; j++) {
+				if (temp[i][j]) {
+					for (int k = 0; k < arr.length; k++) {
+						arr[k][j] = 0;
+					}
+					for (int k = 0; k < arr[0].length; k++) {
+						arr[i][k] = 0;
+					}
+				}
+			}
+		}
+		System.out.println("Result: ");
+		printTwoDimensionalArray(arr);
+	}
 	
 	
 	
