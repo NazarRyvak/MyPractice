@@ -5,6 +5,7 @@ import java.util.Random;
 import arrays.OneDimensionalArrays;
 import arrays.SortingArrays;
 import arrays.TwoDimensionalArrays;
+import programs.NotRecursive;
 
 
 public class Main {
@@ -86,10 +87,10 @@ public class Main {
 
 		//
 		
-		int[] arr1 = randomIntegerArray(10000, 0, 10000);
+		/*int[] arr1 = randomIntegerArray(10000, 0, 10000);
 		int[] arr2 = Arrays.copyOf(arr1, arr1.length);
 		int[] arr3 = Arrays.copyOf(arr1, arr1.length);
-		int[] arr6 = Arrays.copyOf(arr1, arr1.length);
+		int[] arr6 = Arrays.copyOf(arr1, arr1.length);*/
 
 		//Merger
 		/*int[] arr4 = randomIntegerArray(10000, 0, 10000);
@@ -190,8 +191,16 @@ public class Main {
 		//TwoDimensionalArrays.task136(randomIntegerArray2D(5, 5, -20, 20));
 		//TwoDimensionalArrays.task137(new int[][]{{1,3,5,11},{5,11,1,3}});
 		//TwoDimensionalArrays.task138(randomIntegerArray2D(5, 5, 0, 2));
-		TwoDimensionalArrays.task139(randomIntegerArray2D(5, 5, -10, 10));
+		//TwoDimensionalArrays.task139(randomIntegerArray2D(5, 5, -10, 10));
 		
+		//NotRecursive.task142(0, 3, 1, 2, 7, -20);
+		//NotRecursive.task143(0, 15);
+		//NotRecursive.task144(new int[] {15,16,45,60});
+		//NotRecursive.task145(new int[] {15,30,45,60});
+		//NotRecursive.task146(1,2,3);
+		//NotRecursive.task147(1);
+		//NotRecursive.task148(new int[][] {{0,1},{0,2},{2,1},{-1,3},{0,-8},{9,9},{1,1},{5,3},{8,7}});
+		NotRecursive.task149(25,50,76);
 	}
 	
 	static int[] randomIntegerArray(int k, int min, int max) {
