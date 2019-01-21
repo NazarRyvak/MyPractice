@@ -200,7 +200,18 @@ public class Main {
 		//NotRecursive.task146(1,2,3);
 		//NotRecursive.task147(1);
 		//NotRecursive.task148(new int[][] {{0,1},{0,2},{2,1},{-1,3},{0,-8},{9,9},{1,1},{5,3},{8,7}});
-		NotRecursive.task149(25,50,76);
+		//NotRecursive.task149(25,50,76);
+		//NotRecursive.task150();
+		//NotRecursive.task151(2,4,2,4);
+		//NotRecursive.task152(randomIntegerArray(26, 0, 10));
+		//NotRecursive.task153(1,2,4,10);
+		//NotRecursive.task154(10);
+		//NotRecursive.task155(2,6);
+		//NotRecursive.task157(randomIntegerArray(26, -10, 10));
+		//NotRecursive.task158(randomIntegerArray(26, -10, 10));
+		//NotRecursive.task159(33);
+		NotRecursive.task160(37);
+		
 	}
 	
 	static int[] randomIntegerArray(int k, int min, int max) {

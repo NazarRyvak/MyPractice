@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import arrays.TwoDimensionalArrays;
+
 public class NotRecursive {
 
 	// 142 begin
@@ -256,7 +258,7 @@ public class NotRecursive {
 	// 150 begin
 
 	public static void task150() {
-		for (int i = 1; i < 10; i = i + 1) {
+		for (int i = 1; i < 10; i = i + 2) {
 			System.out.println(i + "! = " + factorial(i));
 		}
 	}
@@ -267,11 +269,215 @@ public class NotRecursive {
 			return -1;
 		}
 		int result = 1;
-		for (int i = 2; i < number; i++) {
+		for (int i = 2; i <= number; i++) {
 			result *= i;
 		}
 		return result;
 	}
 
 	// 150 end
+	
+	// 151 begin
+
+	public static void task151(int a, int b, int c, int d) {
+		sum(a, b, c, d);
+		division(a, b, c, d);
+		multiplication(a, b, c, d);
+	}
+
+	private static void sum(int a, int b, int c, int d) {
+		int lcm = lcm(b, d);
+		System.out.println(a + "/" + b + " + " + c + "/" + d + " = " + (lcm / b * a + lcm / d * c) + "/" + lcm);
+	}
+
+	private static void division(int a, int b, int c, int d) {
+		int numerator = a * d;
+		int denominator = b * c;
+		int gcd = gcd(numerator, denominator);
+		System.out.println(a + "/" + b + " / " + c + "/" + d + " = " + (numerator / gcd) + "/" + (denominator / gcd));
+	}
+
+	private static void multiplication(int a, int b, int c, int d) {
+		int numerator = a * c;
+		int denominator = b * d;
+		int gcd = gcd(numerator, denominator);
+		System.out.println(a + "/" + b + " * " + c + "/" + d + " = " + (numerator / gcd) + "/" + (denominator / gcd));
+	}
+
+	// 151 end
+
+	// 152 begin
+	public static void task152(int[] arr) {
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!Size of array should be even number");
+			return;
+		}
+		double[][] matrix = new double[arr.length / 2][arr.length / 2];
+
+		int indexI = 0;
+		int indexJ = 0;
+
+		for (int i = 0; i < arr.length - 1; i = i + 2) {
+			for (int j = 0; j < arr.length - 1; j = j + 2) {
+				matrix[indexI][indexJ] = lengthBetweenPoints(arr[i], arr[i + 1], arr[j], arr[j + 1]);
+				indexJ++;
+			}
+			indexJ = 0;
+			indexI++;
+		}
+		System.out.println("Result: ");
+		printMatrix(matrix);
+	}
+
+	private static void printMatrix(double[][] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length; j++) {
+				System.out.printf("%.2f", arr[i][j]);
+				System.out.print("\t");
+			}
+			System.out.println();
+		}
+	}
+
+	// 152 end
+
+	public static void task153(double x, double y, double z, double t) {
+		double hypotenuse = Math.sqrt(x * x + y * y);
+		double square = squareOfTriangleByGerone(x, y, hypotenuse) + squareOfTriangleByGerone(z, t, hypotenuse);
+		if (Double.isNaN(square)) {
+			System.out.println("The quadrangle with your sides of quadrangle does not exist!!!");
+			return;
+		}
+		System.out.println("Square: " + square);
+	}
+
+	public static void task154(int n) {
+		int[][] arr = new int[n][2];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i][0] = 1;
+			arr[i][1] = factorial(i);
+		}
+		System.out.println("Result: ");
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i][0] + "/" + arr[i][1] + "\t");
+		}
+	}
+	
+	public static void task155(int m, int n) {
+		long sum = 0L;
+		if (m%2!=0) {
+			m++;
+		}
+		for (int i = m; i <= n; i = i+2) {
+			sum+= factorial(i);
+		}
+		System.out.println("Result: " + sum);
+	}
+	
+	public static void task156(int[] arr) {
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		int count = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i]<0) {
+				arr[i] = -arr[i];
+				count++;
+			}
+		}
+		System.out.println("Result:");
+		System.out.println(Arrays.toString(arr));
+		System.out.println("Count of replace: " + count);
+	}
+	
+	public static void task157(int[] arr) {
+		List<Integer> list = new ArrayList<>();
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		int count = 0;
+		if (arr[1]>arr[0]) {
+			list.add(arr[1]);
+		}
+		for (int i = 1; i < arr.length - 1; i++) {
+			if (arr[i-1]>arr[i]) {
+				list.add(arr[i-1]);
+			}
+			if (arr[i+1]>arr[i]) {
+				list.add(arr[i+1]);
+			}
+		}
+		if (arr[arr.length-2]>arr[arr.length-1]) {
+			list.add(arr[arr.length-2]);
+		}
+		int[] result = list.stream().mapToInt(i -> i).toArray();
+		System.out.println("Result: ");
+		System.out.println(Arrays.toString(result));
+	}
+	
+	//begin 158
+	public static void task158(int[] arr) {
+		if (arr.length % 2 != 0) {
+			System.out.println("Incorrect data!!!Size of array should be even number");
+			return;
+		}
+		System.out.println("Your array:");
+		System.out.println(Arrays.toString(arr));
+		double[] result = new double[arr.length/2];
+		int indexResult = 0;
+		for (int i = 0; i < arr.length; i=i+2) {
+			result[indexResult++] = averageOfArray(new double[] {arr[i], arr[i+1]});
+		}
+		System.out.println("Result: ");
+		System.out.println(Arrays.toString(result));
+	}
+	
+	private static double averageOfArray(double[] arr) {
+		double sum = 0; 
+		for (int i = 0; i < arr.length; i++) {
+			sum+=arr[i];
+		}
+		return sum/arr.length;
+	}
+
+	//end 158
+	
+	//begin 159
+	public static void task159(int simpleNumber) {
+		if (!isSimpleNumber(simpleNumber)) {
+			System.out.println("Your number is not simple!!");
+			return;
+		}
+		System.out.println("Result: " + nextSimpleNumber(simpleNumber));
+	}
+	
+	public static boolean isSimpleNumber(int number) {
+		boolean isSimple = true;
+		for (int j = 2; j <= Math.sqrt(number); j++) {
+			if (number % j == 0) {
+				isSimple = false;
+				break;
+			}
+		}
+		return isSimple;
+
+	}
+	
+	public static int nextSimpleNumber(int simpleNumber) {
+		while (true) {
+			if (isSimpleNumber(++simpleNumber)) {
+				return simpleNumber;
+			}
+		}
+	}
+	//end 159
+	
+	public static void task160(int number) {
+		int simpleNumber = 1;
+		while (true) {
+			simpleNumber = nextSimpleNumber(simpleNumber);
+			if (number%simpleNumber==0) {
+				System.out.println("Result: " + simpleNumber);
+				break;
+			}
+		}
+	}
 }
