@@ -210,7 +210,16 @@ public class Main {
 		//NotRecursive.task157(randomIntegerArray(26, -10, 10));
 		//NotRecursive.task158(randomIntegerArray(26, -10, 10));
 		//NotRecursive.task159(33);
-		NotRecursive.task160(37);
+		//NotRecursive.task160(37);
+		//NotRecursive.task161(37);
+		//NotRecursive.task162(372,5223);
+		//NotRecursive.task163(37);
+		//NotRecursive.task164(12,363);
+		//NotRecursive.task166(284);
+		//NotRecursive.task167(150);
+		//NotRecursive.task168(5);
+		//NotRecursive.task169(5);
+		NotRecursive.task170(20000000);
 		
 	}
 	
