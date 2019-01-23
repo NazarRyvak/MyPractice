@@ -3,6 +3,7 @@ package programs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import arrays.TwoDimensionalArrays;
 
@@ -276,7 +277,7 @@ public class NotRecursive {
 	}
 
 	// 150 end
-	
+
 	// 151 begin
 
 	public static void task151(int a, int b, int c, int d) {
@@ -290,21 +291,22 @@ public class NotRecursive {
 
 	private static int[] sum(int a, int b, int c, int d) {
 		int lcm = lcm(b, d);
-		return new int[] { (lcm / b * a + lcm / d * c), lcm };
+		int gcd = gcd((lcm / b * a + lcm / d * c), lcm);
+		return new int[] { (lcm / b * a + lcm / d * c) / gcd, lcm / gcd };
 	}
 
 	private static int[] division(int a, int b, int c, int d) {
 		int numerator = a * d;
 		int denominator = b * c;
 		int gcd = gcd(numerator, denominator);
-		return  new int[]{ (numerator / gcd), (denominator / gcd) };
+		return new int[] { (numerator / gcd), (denominator / gcd) };
 	}
 
 	private static int[] multiplication(int a, int b, int c, int d) {
 		int numerator = a * c;
 		int denominator = b * d;
 		int gcd = gcd(numerator, denominator);
-		return new int[] {(numerator / gcd),(denominator / gcd)};
+		return new int[] { (numerator / gcd), (denominator / gcd) };
 	}
 
 	// 151 end
@@ -365,24 +367,24 @@ public class NotRecursive {
 			System.out.print(arr[i][0] + "/" + arr[i][1] + "\t");
 		}
 	}
-	
+
 	public static void task155(int m, int n) {
 		long sum = 0L;
-		if (m%2!=0) {
+		if (m % 2 != 0) {
 			m++;
 		}
-		for (int i = m; i <= n; i = i+2) {
-			sum+= factorial(i);
+		for (int i = m; i <= n; i = i + 2) {
+			sum += factorial(i);
 		}
 		System.out.println("Result: " + sum);
 	}
-	
+
 	public static void task156(int[] arr) {
 		System.out.println("Your array:");
 		System.out.println(Arrays.toString(arr));
 		int count = 0;
 		for (int i = 0; i < arr.length; i++) {
-			if (arr[i]<0) {
+			if (arr[i] < 0) {
 				arr[i] = -arr[i];
 				count++;
 			}
@@ -391,31 +393,31 @@ public class NotRecursive {
 		System.out.println(Arrays.toString(arr));
 		System.out.println("Count of replace: " + count);
 	}
-	
+
 	public static void task157(int[] arr) {
 		List<Integer> list = new ArrayList<>();
 		System.out.println("Your array:");
 		System.out.println(Arrays.toString(arr));
-		if (arr[1]>arr[0]) {
+		if (arr[1] > arr[0]) {
 			list.add(arr[1]);
 		}
 		for (int i = 1; i < arr.length - 1; i++) {
-			if (arr[i-1]>arr[i]) {
-				list.add(arr[i-1]);
+			if (arr[i - 1] > arr[i]) {
+				list.add(arr[i - 1]);
 			}
-			if (arr[i+1]>arr[i]) {
-				list.add(arr[i+1]);
+			if (arr[i + 1] > arr[i]) {
+				list.add(arr[i + 1]);
 			}
 		}
-		if (arr[arr.length-2]>arr[arr.length-1]) {
-			list.add(arr[arr.length-2]);
+		if (arr[arr.length - 2] > arr[arr.length - 1]) {
+			list.add(arr[arr.length - 2]);
 		}
 		int[] result = list.stream().mapToInt(i -> i).toArray();
 		System.out.println("Result: ");
 		System.out.println(Arrays.toString(result));
 	}
-	
-	//begin 158
+
+	// begin 158
 	public static void task158(int[] arr) {
 		if (arr.length % 2 != 0) {
 			System.out.println("Incorrect data!!!Size of array should be even number");
@@ -423,26 +425,26 @@ public class NotRecursive {
 		}
 		System.out.println("Your array:");
 		System.out.println(Arrays.toString(arr));
-		double[] result = new double[arr.length/2];
+		double[] result = new double[arr.length / 2];
 		int indexResult = 0;
-		for (int i = 0; i < arr.length; i=i+2) {
-			result[indexResult++] = averageOfArray(new double[] {arr[i], arr[i+1]});
+		for (int i = 0; i < arr.length; i = i + 2) {
+			result[indexResult++] = averageOfArray(new double[] { arr[i], arr[i + 1] });
 		}
 		System.out.println("Result: ");
 		System.out.println(Arrays.toString(result));
 	}
-	
+
 	private static double averageOfArray(double[] arr) {
-		double sum = 0; 
+		double sum = 0;
 		for (int i = 0; i < arr.length; i++) {
-			sum+=arr[i];
+			sum += arr[i];
 		}
-		return sum/arr.length;
+		return sum / arr.length;
 	}
 
-	//end 158
-	
-	//begin 159
+	// end 158
+
+	// begin 159
 	public static void task159(int simpleNumber) {
 		if (!isSimpleNumber(simpleNumber)) {
 			System.out.println("Your number is not simple!!");
@@ -450,7 +452,7 @@ public class NotRecursive {
 		}
 		System.out.println("Result: " + nextSimpleNumber(simpleNumber));
 	}
-	
+
 	public static boolean isSimpleNumber(int number) {
 		boolean isSimple = true;
 		for (int j = 2; j <= Math.sqrt(number); j++) {
@@ -462,7 +464,7 @@ public class NotRecursive {
 		return isSimple;
 
 	}
-	
+
 	private static int nextSimpleNumber(int simpleNumber) {
 		while (true) {
 			if (isSimpleNumber(++simpleNumber)) {
@@ -470,23 +472,23 @@ public class NotRecursive {
 			}
 		}
 	}
-	//end 159
-	
+	// end 159
+
 	public static void task160(int number) {
 		int simpleNumber = 1;
 		while (true) {
 			simpleNumber = nextSimpleNumber(simpleNumber);
-			if (number%simpleNumber==0) {
+			if (number % simpleNumber == 0) {
 				System.out.println("Result: " + simpleNumber);
 				break;
 			}
 		}
 	}
-	
-	//begin 160
-	
+
+	// begin 160
+
 	public static void task161(int number) {
-		if (number<=0) {
+		if (number <= 0) {
 			System.out.println("Incorrect data!!!Number is not natural!!!");
 			return;
 		}
@@ -495,7 +497,7 @@ public class NotRecursive {
 	}
 
 	private static int[] getArrayDigitsOfNumber(int number) {
-		if (number<=0) {
+		if (number < 0) {
 			System.out.println("Incorrect data!!!Number is not natural!!!");
 			return null;
 		}
@@ -507,12 +509,11 @@ public class NotRecursive {
 		}
 		return digits;
 	}
-	
-	//end 160
-	
+
+	// end 160
+
 	public static void task162(int numberA, int numberB) {
-		if (numberA<=0||numberB<=0) {
-			System.out.println("Incorrect data!!!Number is not natural!!!");
+		if (numberA <= 0 || numberB <= 0) {
 			return;
 		}
 		if (getArrayDigitsOfNumber(numberA).length > getArrayDigitsOfNumber(numberB).length) {
@@ -523,34 +524,34 @@ public class NotRecursive {
 			System.out.println("Equal!!");
 		}
 	}
-	
-	//begin 163
+
+	// begin 163
 	public static void task163(int number) {
-		if (number<=0) {
+		if (number <= 0) {
 			System.out.println("Incorrect data!!!Number is not natural!!!");
 			return;
 		}
 		System.out.println("Result: " + getReverseNumber(number));
 	}
-	
+
 	private static int getReverseNumber(int number) {
 		int[] digits = getArrayDigitsOfNumber(number);
 		StringBuilder sb = new StringBuilder();
-		for (int i = digits.length - 1; i >=0; i--) {
+		for (int i = digits.length - 1; i >= 0; i--) {
 			sb.append(String.valueOf(digits[i]));
 		}
 		return Integer.parseInt(String.valueOf(sb));
 	}
-	//end 163
-	
-	//begin 164
+	// end 163
+
+	// begin 164
 	public static void task164(int k, int n) {
-		if (k<=0||n<=0) {
+		if (k <= 0 || n <= 0) {
 			System.out.println("Incorrect data!!!Number is not natural!!!");
 			return;
 		}
 		List<Integer> numbers = new ArrayList<>();
-		for (int i = 1; i <=n; i++) {
+		for (int i = 1; i <= n; i++) {
 			if (checkSumDigitsOfNumberEqualSomeNumber(i, k)) {
 				numbers.add(i);
 			}
@@ -559,21 +560,22 @@ public class NotRecursive {
 		System.out.println("Result: ");
 		System.out.println(Arrays.toString(arr));
 	}
+
 	private static boolean checkSumDigitsOfNumberEqualSomeNumber(int checkNumber, int equalNumber) {
 		int[] digits = getArrayDigitsOfNumber(checkNumber);
 		int sum = 0;
 		for (int j = 0; j < digits.length; j++) {
-			sum+=digits[j];
+			sum += digits[j];
 		}
 		if (sum == equalNumber) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	//end 164
-	
-	//begin 166
+	// end 164
+
+	// begin 166
 	public static void task166(int n) {
 
 		for (int i = 1; i < n; i++) {
@@ -601,62 +603,62 @@ public class NotRecursive {
 		}
 		return sum;
 	}
-	
-	//end 166
-	
+
+	// end 166
+
 	public static void task167(int n) {
-		if (n<2) {
+		if (n < 2) {
 			System.out.println("Incorrect data!!!n<2");
 			return;
 		}
 		int simpleNumber = 1;
 		int nextSimpleNumber;
-		System.out.println(1+"\t"+3);
-		while(true) {
+		System.out.println(1 + "\t" + 3);
+		while (true) {
 			nextSimpleNumber = nextSimpleNumber(simpleNumber);
-			if (nextSimpleNumber>2*n) {
+			if (nextSimpleNumber > 2 * n) {
 				break;
 			}
 			if (nextSimpleNumber - 2 == simpleNumber) {
-				System.out.println(simpleNumber+"\t"+nextSimpleNumber);
+				System.out.println(simpleNumber + "\t" + nextSimpleNumber);
 			}
 			simpleNumber = nextSimpleNumber(simpleNumber);
 		}
 	}
-	
+
 	public static void task168(int n) {
-		if (n<1) {
+		if (n < 1) {
 			System.out.println("Incorrect data!!!n<1");
 			return;
 		}
-		int[] sum = new int[] {1,1};
+		int[] sum = new int[] { 1, 1 };
 		for (int i = 2; i <= n; i++) {
-			int[] result = sum(sum[0], sum[1],(int)Math.pow(-1, i) , i);
+			int[] result = sum(sum[0], sum[1], (int) Math.pow(-1, i), i);
 			sum[0] = result[0];
 			sum[1] = result[1];
 		}
 		int gcd = gcd(sum[0], sum[1]);
-		
-		System.out.println("Result(n = " + n +") = " + sum[0]/gcd + " / " + sum[1]/gcd);
+
+		System.out.println("Result(n = " + n + ") = " + sum[0] / gcd + " / " + sum[1] / gcd);
 	}
-	
+
 	public static void task169(int n) {
-		if (n<1) {
+		if (n < 1) {
 			System.out.println("Incorrect data!!!n<1");
 			return;
 		}
-		int[] sum = new int[] {1,1};
+		int[] sum = new int[] { 1, 1 };
 		for (int i = 2; i <= n; i++) {
-			int[] result = sum(sum[0], sum[1], 1 , i);
+			int[] result = sum(sum[0], sum[1], 1, i);
 			sum[0] = result[0];
 			sum[1] = result[1];
 		}
 		int gcd = gcd(sum[0], sum[1]);
-		System.out.println("Result(n = " + n +") = " + sum[0]/gcd + " / " + sum[1]/gcd);
+		System.out.println("Result(n = " + n + ") = " + sum[0] / gcd + " / " + sum[1] / gcd);
 	}
 	
 	public static void task170(int k) {
-		if (k<1) {
+		if (k < 1) {
 			System.out.println("Incorrect data!!!k<1");
 			return;
 		}
@@ -666,11 +668,273 @@ public class NotRecursive {
 			int[] digits = getArrayDigitsOfNumber(i);
 			sum = 0;
 			for (int j = 0; j < digits.length; j++) {
-				sum+=Math.pow(digits[j], digits.length);
+				sum += Math.pow(digits[j], digits.length);
 			}
-			if (sum==i) {
-				System.out.print(i+"\t");
+			if (sum == i) {
+				System.out.print(i + "\t");
 			}
 		}
 	}
+
+	// 171 begin
+
+	public static void task171() {
+		int firstNumber;
+		int secondNumber;
+		for (int i = 1000; i < 10000; i++) {
+			int[] digits = getArrayDigitsOfNumber(i);
+			if (areAllElementsDifferent(digits)) {
+				firstNumber = i / 100;
+				secondNumber = i % 100;
+				if (firstNumber - secondNumber == sumElementsOfArray(digits)) {
+					System.out.println(i);
+				}
+			}
+		}
+	}
+
+	private static boolean areAllElementsDifferent(int arr[]) {
+		boolean areDifferent = true;
+		for (int i = 0; i < arr.length - 1; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[i] == arr[j]) {
+					areDifferent = false;
+					return areDifferent;
+				}
+			}
+		}
+		return areDifferent;
+	}
+
+	private static int sumElementsOfArray(int[] arr) {
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sum += arr[i];
+		}
+		return sum;
+	}
+
+	// 171 end
+
+	// 172 begin
+
+	public static void task172(int n) {
+		int simpleNumber = 1;
+		do {
+			if (elementsOfArrayAreEqualToElementsReverseArray(decimalToBinarySystem(simpleNumber))) {
+				System.out.println(simpleNumber);
+			}
+			simpleNumber = nextSimpleNumber(simpleNumber);
+		} while (simpleNumber <= n);
+	}
+
+	private static int[] decimalToBinarySystem(int number) {
+		List<Integer> list = new ArrayList<>();
+		while (true) {
+			list.add(number % 2);
+			number /= 2;
+			if (number == 0) {
+				return list.stream().mapToInt(i -> i).toArray();
+			}
+		}
+	}
+
+	private static boolean elementsOfArrayAreEqualToElementsReverseArray(int[] arr) {
+		for (int i = 0; i < arr.length / 2; i++) {
+			if (arr[i] != arr[arr.length - i - 1]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// 172 end
+
+	// 173 begin
+	public static void task173(int n) {
+
+		if (n > 9) {
+			return;
+		}
+		int begin = 1;
+		int end = 9;
+		for (int i = 1; i < n; i++) {
+			begin = Integer.valueOf(begin + "0");
+			end = Integer.valueOf(end + "9");
+		}
+		for (int i = begin; i <= end; i++) {
+			if (isAscendingSequence(getArrayDigitsOfNumber(i))) {
+				System.out.println(i);
+			}
+		}
+	}
+
+	private static boolean isAscendingSequence(int[] arr) {
+		for (int i = 0; i < arr.length - 1; i++) {
+			if (arr[i] >= arr[i + 1]) {
+				return false;
+			}
+		}
+		return true;
+	}
+	// 173 end
+
+	// 174 begin
+	public static void task174(int n) {
+		System.out.println("Result: ");
+		boolean isOk = true;
+		for (int i = 1; i <= n; i++) {
+			int[] digits = IntStream.of(getArrayDigitsOfNumber(i)).distinct().toArray();
+			if (arrayHasZero(digits)) {
+				continue;
+			}
+			for (int j = 0; j < digits.length; j++) {
+				if (isOk) {
+
+				}
+				if (i % digits[j] != 0) {
+					isOk = false;
+					break;
+				}
+			}
+			if (!isOk) {
+				isOk = true;
+				continue;
+			}
+			System.out.println(i);
+		}
+	}
+
+	private static boolean arrayHasZero(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == 0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	// 174 end
+
+	// 175 begin
+
+	public static void task175(int m, int n) {
+		if (m > n) {
+			System.out.println("Incorrect interval!!!");
+			return;
+		}
+		List<Integer> list = new ArrayList<>();
+		int maxCount = 0;
+		int countDivider;
+		for (int i = m; i <= n; i++) {
+			countDivider = countDividerOfNumber(i);
+			if (countDivider > maxCount) {
+				maxCount = countDivider;
+				list.clear();
+			}
+			if (countDivider == maxCount) {
+				list.add(i);
+			}
+		}
+		list.forEach(System.out::println);
+	}
+
+	private static int countDividerOfNumber(int number) {
+		int count = 0;
+		for (int i = 1; i < Math.sqrt(number); i++) {
+			if (number % i == 0) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	// 175 end
+
+	public static void task176(int k) {
+		int[] sum = new int[] { 1, 1 };
+		for (int i = 2; i <= k; i++) {
+			int[] denominator = sum(1, 1, sum[0], sum[1]);
+			int[] secondOperand = division(1, 1, denominator[0], denominator[1]);
+			sum = sum(sum[0], sum[1], secondOperand[0], secondOperand[1]);
+		}
+		System.out.println("Result: " + sum[0] + " / " + sum[1]);
+	}
+
+	public static void task177(int n) {
+		for (int i = 1; i < Math.sqrt(n); i++) {
+			if (n % i == 0) {
+				if (i * (i + 1) * (i + 2) == n) {
+					System.out.println("True!!!");
+					System.out.println(i + "*" + (i + 1) + "*" + (i + 2) + "=" + n);
+					return;
+				}
+			}
+		}
+		System.out.println("False!!!");
+	}
+
+	public static void task178(String n, String m) {
+		if (n.length() != 6 || n.length() != 6) {
+			System.out.println("Incorrect data!!!The number of ticket should consist with 6 digits");
+			return;
+		}
+		int begin = Integer.parseInt(n);
+		int end = Integer.parseInt(m);
+		int count = 0;
+		if (begin == 0) {
+			count++;
+			begin++;
+		}
+		for (int i = begin; i <= end; i++) {
+			System.err.println(i);
+			if (sumElementsOfArray(getArrayDigitsOfNumber(i / 1000)) == sumElementsOfArray(
+					getArrayDigitsOfNumber(i % 1000))) {
+				count++;
+			}
+		}
+		System.out.println("Result: " + count);
+	}
+
+	// begin 179
+	public static void task179(int n) {
+		int begin = 1;
+		int end = 9;
+		for (int i = 1; i < n; i++) {
+			begin = Integer.valueOf(begin + "0");
+			end = Integer.valueOf(end + "9");
+		}
+		long sum = 0L;
+		for (int i = begin; i <= end; i++) {
+			if (!checkArrayHasEvenNumber(getArrayDigitsOfNumber(i))) {
+				sum += i;
+			}
+		}
+		System.out.println("Result: " + sum);
+
+	}
+
+	private static boolean checkArrayHasEvenNumber(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] % 2 == 0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	// end 179
+
+	public static void task180(int n) {
+		int count = 0;
+		while (n > 0) {
+			n -= sumElementsOfArray(getArrayDigitsOfNumber(n));
+			count++;
+		}
+		System.out.println("Result: " + count);
+	}
+	
+	 
+	
+
+
+	
 }
