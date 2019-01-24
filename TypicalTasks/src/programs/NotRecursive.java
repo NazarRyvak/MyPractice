@@ -289,25 +289,7 @@ public class NotRecursive {
 		System.out.println(a + "/" + b + " * " + c + "/" + d + " = " + multiplication[0] + "/" + multiplication[1]);
 	}
 
-	private static int[] sum(int a, int b, int c, int d) {
-		int lcm = lcm(b, d);
-		int gcd = gcd((lcm / b * a + lcm / d * c), lcm);
-		return new int[] { (lcm / b * a + lcm / d * c) / gcd, lcm / gcd };
-	}
-
-	private static int[] division(int a, int b, int c, int d) {
-		int numerator = a * d;
-		int denominator = b * c;
-		int gcd = gcd(numerator, denominator);
-		return new int[] { (numerator / gcd), (denominator / gcd) };
-	}
-
-	private static int[] multiplication(int a, int b, int c, int d) {
-		int numerator = a * c;
-		int denominator = b * d;
-		int gcd = gcd(numerator, denominator);
-		return new int[] { (numerator / gcd), (denominator / gcd) };
-	}
+	//task 184
 
 	// 151 end
 
@@ -931,10 +913,166 @@ public class NotRecursive {
 		}
 		System.out.println("Result: " + count);
 	}
-	
-	 
-	
 
+	public static void task181(int n) {
+		int[] arr = new int[32];
 
+		int i = 0;
+		int simpleNumber = 2;
+		do {
+			if (n % simpleNumber == 0) {
+				arr[i] = simpleNumber;
+				i++;
+				n /= simpleNumber;
+			} else {
+				simpleNumber = nextSimpleNumber(simpleNumber);
+			}
+		} while (n != 1);
+		i = 0;
+		System.out.println("Result:");
+		while (true) {
+			System.out.print(arr[i]);
+			i++;
+			if (arr[i] == 0) {
+				break;
+			}
+			System.out.print("*");
+		}
+	}
+	
+	public static void task182(int n) {
+		System.out.println("Result: ");
+		int simpleNumber = 1;
+		int result;
+		while(true) {
+			result = (int)Math.pow(2, simpleNumber)-1;
+			if (result>n) {
+				break;
+			}
+			System.out.print(result+"\t");
+			simpleNumber=nextSimpleNumber(simpleNumber);
+		}
+	}
+	
+	public static void task183(int n) {
+		if (n % 2 != 0) {
+			System.out.println("Incorrect data!!!The number is not even!!");
+			return;
+		}
+		for (int i = 1; i <= n; i = nextSimpleNumber(i)) {
+			for (int j = 1; j <= n - i; j = nextSimpleNumber(j)) {
+				if (i + j == n) {
+					System.out.println("True!!! " + i + " + " + j + " = " + n);
+					return;
+				}
+			}
+		}
+		System.out.println("False!!!!");
+	}
+	
+	//184 begin
+	
+	public static void task184(int a, int b, int c, int d) {
+		if (b < 1 || d < 1) {
+			System.out.println("Incorrect data!!!Denominators should be bigger than 0 and integer");
+			return;
+		}
+		int[] sum = sum(a, b, c, d);
+		System.out.println(a + "/" + b + " + " + c + "/" + d + " = " + sum[0] + "/" + sum[1]);
+		int[] subtraction = subtraction(a, b, c, d);
+		System.out.println(a + "/" + b + " - " + c + "/" + d + " = " + subtraction[0] + "/" + subtraction[1]);
+		int[] division = division(a, b, c, d);
+		System.out.println(a + "/" + b + " / " + c + "/" + d + " = " + division[0] + "/" + division[1]);
+		int[] multiplication = multiplication(a, b, c, d);
+		System.out.println(a + "/" + b + " * " + c + "/" + d + " = " + multiplication[0] + "/" + multiplication[1]);
+		int[] power = pow(a, b, 4);
+		System.out.println("(" + a + "/" + b + ") ^ " + c + " = " + power[0] + "/" + power[1]);
+
+		if (compare(a, b, c, d) > 0) {
+			System.out.println(a + "/" + b + " > " + c + "/" + d);
+		} else if (compare(a, b, c, d) > 0) {
+			System.out.println(a + "/" + b + " < " + c + "/" + d);
+		} else {
+			System.out.println(a + "/" + b + " = " + c + "/" + d);
+		}
+	}
+
+	private static int[] reduce(int a, int b) {
+		int gcd = gcd(a, b);
+		return new int[] { a / gcd, b / gcd };
+	}
+
+	private static int[] sum(int a, int b, int c, int d) {
+		int lcm = lcm(b, d);
+		return reduce((lcm / b * a + lcm / d * c), lcm);
+	}
+
+	private static int[] subtraction(int a, int b, int c, int d) {
+		int lcm = lcm(b, d);
+		return reduce((lcm / b * a + lcm / d * c), lcm);
+	}
+
+	private static int[] division(int a, int b, int c, int d) {
+		return reduce(a * d, b * c);
+	}
+
+	private static int[] multiplication(int a, int b, int c, int d) {
+		return reduce(a * c, b * d);
+	}
+
+	private static int[] pow(int a, int b, int power) {
+		return new int[] { (int) Math.pow(a, power), (int) Math.pow(b, power) };
+	}
+
+	private static int compare(int a, int b, int c, int d) {
+		int lcm = lcm(b, d);
+		if (lcm / b * a > lcm / d * c) {
+			return 1;
+		} else if (lcm / b * a < lcm / d * c) {
+			return -1;
+		} else {
+			return 0;
+		}
+	}
+	//184 end
+
+	// 185 begin
+	public static void task185(int x1, int y1, int x2, int y2) {
+		int[] sum = sumVector(x1, y1, x2, y2);
+		System.out.println(
+				"(" + x1 + ";" + y1 + ") + " + "(" + x2 + ";" + y2 + ") = " + "(" + sum[0] + ";" + sum[1] + ") = ");
+		int[] subtraction = subtractionVector(x1, y1, x2, y2);
+		System.out.println("(" + x1 + ";" + y1 + ") - " + "(" + x2 + ";" + y2 + ") = " + "(" + subtraction[0] + ";"
+				+ subtraction[1] + ") = ");
+		System.out.println("Length(" + x1 + ";" + y1 + ") = " + lengthVector(x1, y1));
+		int constanta = 3;
+		int[] subtractionConst = multiplicationVectorAndConstanta(x1, y1, constanta);
+		System.out.println(constanta + "*(" + x1 + ";" + y1 + ") = " + "(" + subtractionConst[0] + ";"
+				+ subtractionConst[1] + ")");
+		int[] scalar = scalarMultiplicationVector(x1, y1, x2, y2);
+		System.out.println("(" + x1 + ";" + y1 + ") * " + "(" + x2 + ";" + y2 + ") = " + "(" + scalar[0] + ";"
+				+ scalar[1] + ") = ");
+	}
+
+	private static int[] sumVector(int x1, int y1, int x2, int y2) {
+		return new int[] { x1 + x2, y1 + y2 };
+	}
+
+	private static int[] subtractionVector(int x1, int y1, int x2, int y2) {
+		return new int[] { x1 - x2, y1 - y2 };
+	}
+
+	private static double lengthVector(int x1, int y1) {
+		return Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2));
+	}
+
+	private static int[] multiplicationVectorAndConstanta(int x1, int y1, int constanta) {
+		return new int[] { constanta * x1, constanta * y1 };
+	}
+
+	private static int[] scalarMultiplicationVector(int x1, int y1, int x2, int y2) {
+		return new int[] { x2 * x1, y2 * y1 };
+	}
+	// 185 end
 	
 }

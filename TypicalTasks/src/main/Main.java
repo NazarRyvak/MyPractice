@@ -229,7 +229,12 @@ public class Main {
 		//NotRecursive.task177(13202);
 		//NotRecursive.task178("000000","000999");
 		//NotRecursive.task179(3);
-		NotRecursive.task180(29);
+		//NotRecursive.task180(29);
+		//NotRecursive.task181(121);
+		//NotRecursive.task182(12100);
+		//NotRecursive.task183(10000);
+		//NotRecursive.task184(1,3,-2,8);
+		//NotRecursive.task185(1,3,-2,8);
 		
 	}
 	
