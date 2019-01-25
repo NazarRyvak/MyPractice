@@ -6,6 +6,7 @@ import arrays.OneDimensionalArrays;
 import arrays.SortingArrays;
 import arrays.TwoDimensionalArrays;
 import programs.NotRecursive;
+import programs.Recursive;
 
 
 public class Main {
@@ -235,6 +236,33 @@ public class Main {
 		//NotRecursive.task183(10000);
 		//NotRecursive.task184(1,3,-2,8);
 		//NotRecursive.task185(1,3,-2,8);
+		
+		/*int sum = Recursive.task186(123456);
+		System.out.println(sum);*/
+		
+	/*	int[] arr = randomIntegerArray(10, 0, 100);
+		System.out.println(Arrays.toString(arr));
+		Recursive.task187(arr, 0);
+		System.out.println(Arrays.toString(arr));*/
+		
+		//Recursive.task188(10);
+		
+		/*int count = Recursive.task189(2323234);
+		System.out.println(count);*/
+		
+	/*	int c = Recursive.task190(10,20);
+		System.out.println(c);*/
+		
+		//System.out.println(Recursive.task191("abdcba", 0, 5));
+		//System.out.println(Recursive.task192(2, 10));
+		//System.out.println(Recursive.task193(123123497));
+		//System.out.println(Recursive.task194(11,2));
+		//System.out.println(Recursive.task195("1011",0,2));
+		System.out.println(Recursive.task196(15,1));
+		//197
+		System.out.println(Recursive.task196(16,2));
+		
+		
 		
 	}
 	
