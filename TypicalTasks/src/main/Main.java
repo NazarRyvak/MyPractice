@@ -7,6 +7,7 @@ import arrays.SortingArrays;
 import arrays.TwoDimensionalArrays;
 import programs.NotRecursive;
 import programs.Recursive;
+import string.WorkWithString;
 
 
 public class Main {
@@ -258,9 +259,23 @@ public class Main {
 		//System.out.println(Recursive.task193(123123497));
 		//System.out.println(Recursive.task194(11,2));
 		//System.out.println(Recursive.task195("1011",0,2));
-		System.out.println(Recursive.task196(15,1));
+		//System.out.println(Recursive.task196(15,1));
 		//197
-		System.out.println(Recursive.task196(16,2));
+		//System.out.println(Recursive.task196(16,2));
+		
+		//WorkWithString.task198("adsff sadfsd gfgfdh asdfdsf     sdafsdffdf d .dsfadsf");
+		//WorkWithString.task199("brda  bbb,v,bbb.b");
+		//WorkWithString.task200("rkdfffft");
+		//WorkWithString.task201("rkd,fffftasdfasdf.*dff:");
+		//WorkWithString.task202("rkd,fffftasdfasdf. dff: d");
+		//WorkWithString.task203(" dff: d");
+		//WorkWithString.task204(" dff: dddasd sdd aas,");
+		//WorkWithString.task205(" d** dddasd sdd aas,");
+		//WorkWithString.task206(" aabcd dddabccd sdd aas,");
+		//WorkWithString.task207(" aabcd dddabccd sdd :dfkkdkaas,");
+		//WorkWithString.task208(" aabcd dddabccd sdd :dfkkdkaas,");
+		//WorkWithString.task209(" aabcd dddaaaaaaabccd sddaa :dfkkdkaas,");
+		WorkWithString.task210(" aabcd dddaaaaaaabccd( sdd)aa :dfkkdkaas,");
 		
 		
 		
