@@ -6,14 +6,13 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
-import practice.entity.Person;
 import practice.entity.City;
 import practice.entity.Country;
 import practice.entity.Hobby;
+import practice.entity.Person;
 
 
 
