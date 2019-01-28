@@ -218,6 +218,168 @@ public class WorkWithString {
 		System.out.println(str.substring(begin + 1, end));
 	}
 	
+	public static void task211(String str) {
+		int maxCount = 0;
+		int count = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isDigit(str.charAt(i))) {
+				count++;
+			} else {
+				if (count > maxCount) {
+					maxCount = count;
+				}
+				count = 0;
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + maxCount);
+	}
+	
+	public static void task212(String str) {
+		int count = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == ':') {
+				if (str.charAt(i - 1) == 'a') {
+					count++;
+				}
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + count);
+	}
+
+	public static void task213(String str) {
+		int begin = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == ' ' | i == str.length() - 1) {
+				if (str.substring(begin, i).contains("k")) {
+					System.out.println(str.substring(begin, i));
+				}
+				begin = i;
+			}
+		}
+
+	}
+
+	public static void task214(String str) {
+		char[] symbols = new char[] { ' ', '.', ',', '!', '?', ':', ';', ')', '(', '>', '<' };
+		int begin = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == ' ' | i == str.length() - 1) {
+				String word = deleteSymbolsFromWord(str.substring(begin, i), symbols);
+				if (word.length() != 0 && word.charAt(0) == word.charAt(word.length() - 1)) {
+					System.out.println(word);
+				}
+				begin = i;
+			}
+		}
+	}
+
+	private static String deleteSymbolsFromWord(String str, char[] arr) {
+		StringBuilder sb = new StringBuilder(str);
+		Arrays.sort(arr);
+		for (int i = 0; i < sb.length(); i++) {
+			if (Arrays.binarySearch(arr, sb.charAt(i)) >= 0) {
+				sb.deleteCharAt(i);
+				i--;
+			}
+
+		}
+		return sb.toString();
+	}
+
+	public static void task215(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		int count = 0;
+		for (int i = 0; i < sb.length(); i++) {
+			if (sb.charAt(i) == ':') {
+				sb.deleteCharAt(i);
+				sb.insert(i, ';');
+				count++;
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + sb.toString());
+		System.out.println("Count: " + count);
+	}
+
+	public static void task216(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		int count = 0;
+		for (int i = 0; i < sb.length(); i++) {
+			if (sb.charAt(i) == ':') {
+				sb.deleteCharAt(i);
+				count++;
+				i--;
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + sb.toString());
+		System.out.println("Count: " + count);
+	}
+	
+	public static void task217(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		for (int i = 0; i < sb.length(); i++) {
+			if (sb.charAt(i) == ' ') {
+				do {
+					sb.deleteCharAt(i);
+				} while (sb.charAt(i) == ' ');
+				sb.insert(i, ", ");
+				i++;
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + sb.toString());
+	}
+	
+	public static void task218(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		int begin = sb.indexOf("(");
+		int end = sb.indexOf(")");
+		if (begin < 0 || end < 0) {
+			System.out.println("Incorrect data!!!Your string does not have '(' or ')'");
+			return;
+		}
+		if (begin > end) {
+			System.out.println("Incorrect data!!!The first symbol should be '(' not ')");
+			return;
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + sb.delete(begin, end + 1));
+	}
+	
+	public static void task219(String str, String word) {
+		int count = 0;
+		int begin = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == ' ' | i == str.length() - 1) {
+				if (str.substring(begin, i).trim().equals(word.trim())) {
+					count++;
+				}
+				begin = i;
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Word: " + word);
+		System.out.println("Result: " + count);
+	}
+	
+	public static void task220(String str) {
+		int index = str.indexOf(';');
+		if (str.substring(index + 1).contains(";")) {
+			System.out.println("Incorrect data!!!The string has more than 1 symbol ';'");
+			return;
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + str.substring(0, index).length() + ";" + str.substring(index + 1).length());
+	}
+	
+	
+
+	
+	
+	
 	
 	
 }

@@ -275,9 +275,17 @@ public class Main {
 		//WorkWithString.task207(" aabcd dddabccd sdd :dfkkdkaas,");
 		//WorkWithString.task208(" aabcd dddabccd sdd :dfkkdkaas,");
 		//WorkWithString.task209(" aabcd dddaaaaaaabccd sddaa :dfkkdkaas,");
-		WorkWithString.task210(" aabcd dddaaaaaaabccd( sdd)aa :dfkkdkaas,");
-		
-		
+		//WorkWithString.task210(" aabcd dddaaaaaaabccd( sdd)aa :dfkkdkaas,");
+		//WorkWithString.task211("12344sadfj12432315345dsf123sdg12424726346 122sdf");
+		//WorkWithString.task212("asdfdasf:;asdfa:;dsafdsf:;aaaa:;dfdsfdfa:;sdfdf:;");
+		//WorkWithString.task213(" aabcd dddabccd skkkkdd :dfkkdkaas,");
+		//WorkWithString.task214(" aabcd:::?   ddda?s)bccd;; skkkkdd :dfkkdkaas,");
+		//WorkWithString.task215(" aabcd:;:?   ddda?s)bccd;; skkkkdd :dfkkdkaas,");
+		//WorkWithString.task216(" aabcd:;:?   ddda?s)bccd;; skkkkdd :dfkkdkaas,");
+		//WorkWithString.task217("aabcd       dddabccd sdd :dfkkdkaas");
+		//WorkWithString.task218(" aabcd dddaab(aaaaabccd sdd)aa :dfkkdkaas,");
+		//WorkWithString.task219(" aaaaaa aa aa bb aa cc aaaaaa","aa");
+		WorkWithString.task220("abc    ;abcd");
 		
 	}
 	
