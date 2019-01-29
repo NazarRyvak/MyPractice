@@ -285,8 +285,17 @@ public class Main {
 		//WorkWithString.task217("aabcd       dddabccd sdd :dfkkdkaas");
 		//WorkWithString.task218(" aabcd dddaab(aaaaabccd sdd)aa :dfkkdkaas,");
 		//WorkWithString.task219(" aaaaaa aa aa bb aa cc aaaaaa","aa");
-		WorkWithString.task220("abc    ;abcd");
-		
+		//WorkWithString.task220("abc    ;abcd");
+		//WorkWithString.task221("asdf:::asdf??::sdf???::::??dasdsafsdfsadf??::");
+		//WorkWithString.task222("ab323ba");
+		//WorkWithString.task223("ab32dddasd3ba asdfasdf asdfasdf sdaf");
+		//WorkWithString.task224("ab32dAAAda,.////]][][]adsf324afsd3ba afasdf;;'12sdfasdf asdfasdf sdaf");
+		//WorkWithString.task225("asdfdahfjl;kelrjewknjsdnfashdbhbrgwqtergaukfjsdklgmdslkgn");
+		//WorkWithString.task226(new String[] {"dcc","acb","bca","abc"});
+		//WorkWithString.task227("Integral","Agent");
+		//WorkWithString.task228("aisdjk;df");
+		//WorkWithString.task229(new char[][] {{'i','n','t','e'},{'g','r','a','l'}},"Agent");
+		//WorkWithString.task230("adsfjhjhg, asdfdsf asdfsdf asdfsdagfdfagdfsg asdrtyt!",7);
 	}
 	
 	static int[] randomIntegerArray(int k, int min, int max) {

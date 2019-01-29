@@ -2,7 +2,9 @@ package string;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WorkWithString {
 
@@ -374,6 +376,174 @@ public class WorkWithString {
 		System.out.println("Your string: " + str);
 		System.out.println("Result: " + str.substring(0, index).length() + ";" + str.substring(index + 1).length());
 	}
+	
+	public static void task221(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		for (int i = 0; i < sb.length() / 2; i++) {
+			if (sb.charAt(i) == ':') {
+				sb.deleteCharAt(i);
+				sb.insert(i, '.');
+			}
+		}
+		for (int i = sb.length() / 2; i < sb.length(); i++) {
+			if (sb.charAt(i) == '?') {
+				sb.deleteCharAt(i);
+				sb.insert(i, '.');
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + sb.toString());
+	}
+
+	public static void task222(String str) {
+		/*
+		 * StringBuilder sb = new StringBuilder(str); if
+		 * (sb.reverse().toString().equals(str)) { System.out.println("True"); }else {
+		 * System.out.println("False"); }
+		 */
+
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+				System.out.println("False");
+				return;
+			}
+		}
+		System.out.println("True");
+	}
+
+	public static void task223(String str) {
+		StringBuilder result = new StringBuilder();
+		int begin = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == ' ' | i == str.length() - 1) {
+				for (int j = i; j >= begin; j--) {
+					result.append(str.charAt(j));
+				}
+				begin = i;
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + result.toString());
+	}
+
+	public static void task224(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		for (int i = 0; i < sb.length(); i++) {
+			if (Integer.valueOf(sb.charAt(i)) >= Integer.valueOf('a')
+					&& Integer.valueOf(sb.charAt(i)) <= Integer.valueOf('z')) {
+				continue;
+			} else if (Integer.valueOf(sb.charAt(i)) >= Integer.valueOf('A')
+					&& Integer.valueOf(sb.charAt(i)) <= Integer.valueOf('Z')) {
+				continue;
+			} else if (sb.charAt(i) == ' ') {
+				continue;
+			} else {
+				sb.deleteCharAt(i);
+				i--;
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Result: " + sb.toString());
+	}
+
+	public static void task225(String str) {
+		int begin = Integer.valueOf('a');
+		int end = Integer.valueOf('z');
+		int count = 0;
+		System.out.println("Your string: " + str);
+		for (int i = begin; i <= end; i++) {
+			for (int j = 0; j < str.length(); j++) {
+				if ((char) i == str.charAt(j)) {
+					count++;
+				}
+			}
+			System.out.println((char) i + " : " + count);
+			count = 0;
+		}
+	}
+
+	public static void task226(String[] arrStr) {
+		System.out.println("Your array: " + Arrays.toString(arrStr));
+		Arrays.sort(arrStr);
+		System.out.println("Result: " + Arrays.toString(arrStr));
+	}
+	
+	public static void task227(String strA, String strB) {
+		String str = strB.toLowerCase();
+		List<Character> list = strA.toLowerCase().chars().mapToObj(e->(char)e).collect(Collectors.toList());
+		for (int i = 0; i < str.length(); i++) {
+			if (list.contains(str.charAt(i))) {
+				list.remove(list.indexOf(str.charAt(i)));
+			}else {
+				System.out.println("False!!!");
+				return;
+			}
+		}
+		System.out.println("True!!!");
+	}
+	
+	public static void task228(String str) {
+		int countVowels = 0;
+		int countConsonants = 0;
+		String strLC = str.toLowerCase();
+		char[] vowelsLetter = new char[] {'a','e','i','o','u','y'};
+		for (int i = 0; i < strLC.length(); i++) {
+			if (Integer.valueOf(strLC.charAt(i)) >= Integer.valueOf('a')
+					&& Integer.valueOf(strLC.charAt(i)) <= Integer.valueOf('z')) {
+				if (Arrays.binarySearch(vowelsLetter, strLC.charAt(i))>=0) {
+					countVowels++;
+				}else {
+					countConsonants++;
+				}
+			}
+		}
+		System.out.println("Your string: " + str);
+		System.out.println("Vowels: " + countVowels);
+		System.out.println("Consonants: " + countConsonants);
+	}
+	
+	public static void task229(char[][] arr, String str) {
+		List<Character> list = new ArrayList<>();
+		String strLC =str.toLowerCase(); 
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[0].length; j++) {
+				list.add(Character.toLowerCase(arr[i][j]));
+			}
+		}
+		for (int i = 0; i < strLC.length(); i++) {
+			if (list.contains(strLC.charAt(i))) {
+				list.remove(list.indexOf(strLC.charAt(i)));
+			} else {
+				System.out.println("False!!!");
+				return;
+			}
+		}
+		System.out.println("True!!!");
+	}
+	
+	public static void task230(String str, int length) {
+		List<String> list = new ArrayList<>();
+		char[] symbols = new char[] { ' ', '.', ',', '!', '?', ':', ';', ')', '(', '>', '<' };
+		Arrays.sort(symbols);
+		int begin = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i)==' '|i == str.length()-1) {
+				String word = deleteSymbolsFromWord(str.substring(begin, i), symbols);
+				if (word.length()==length) {
+					list.add(word);
+				}
+				begin = i;
+			}
+		}
+		Collections.sort(list);
+		for (String word : list) {
+			System.out.println(word);
+		}
+	}
+	
+	
+	
+	
 	
 	
 
