@@ -33,7 +33,7 @@ public class WorkWithString {
 			count++;
 		}
 		for (int i = 1; i < str.length(); i++) {
-			if (str.charAt(i) == ' ' | str.charAt(i) == ',' | str.charAt(i) == '.') {
+			if (str.charAt(i) == ' ' || str.charAt(i) == ',' || str.charAt(i) == '.') {
 				if (str.charAt(i + 1) == 'b') {
 					count++;
 				}
@@ -46,7 +46,7 @@ public class WorkWithString {
 	public static void task200(String str) {
 		int count = 0;
 		for (int i = 0; i < str.length(); i++) {
-			if (str.charAt(i) == 'r' | str.charAt(i) == 'k' | str.charAt(i) == 't') {
+			if (str.charAt(i) == 'r' || str.charAt(i) == 'k' || str.charAt(i) == 't') {
 				count++;
 			}
 		}
@@ -57,8 +57,8 @@ public class WorkWithString {
 	public static void task201(String str) {
 		int count = 0;
 		for (int i = 0; i < str.length(); i++) {
-			if (str.charAt(i) == ',' | str.charAt(i) == '.' | str.charAt(i) == ':' | str.charAt(i) == ';'
-					| str.charAt(i) == '*') {
+			if (str.charAt(i) == ',' || str.charAt(i) == '.' || str.charAt(i) == ':' || str.charAt(i) == ';'
+					|| str.charAt(i) == '*') {
 				count++;
 			}
 		}
