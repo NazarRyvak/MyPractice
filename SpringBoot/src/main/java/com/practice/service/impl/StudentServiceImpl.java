@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.practice.domain.filter.SimpleFilter;
 import com.practice.entity.Student;
 import com.practice.repository.StudentRepository;
 import com.practice.service.StudentService;
@@ -40,13 +41,11 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public Student findStudentById(int id) {
 		//Optional<Student>optional = studentRepository.findById(id);
-		
 		return studentRepository.findById(id).orElseThrow(()->new StudentNotFoundException("Student with id["+id+"] not found"));
 	}
 
     @Override
 	public List<Student> findStudentsByFilter(SimpleFilter filter) {
-		
 		return studentRepository.findAll(getSpecification(filter));
 	}
 	

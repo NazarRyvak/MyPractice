@@ -14,7 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.logos.domain.filter.FilterForUser;
+import com.practice.domain.filter.FilterForUser;
 import com.practice.entity.User;
 import com.practice.repository.UserRepository;
 import com.practice.service.UserService;
