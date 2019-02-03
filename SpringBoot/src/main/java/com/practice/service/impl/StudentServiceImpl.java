@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.practice.domain.filter.SimpleFilter;
 import com.practice.entity.Student;
+import com.practice.exception.StudentNotFoundException;
 import com.practice.repository.StudentRepository;
 import com.practice.service.StudentService;
 
