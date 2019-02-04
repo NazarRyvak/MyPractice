@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
 
+import com.practice.validator.CheckPasswordMatch;
+
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name="user",indexes= @Index(columnList="first_name,last_name,age"))
-//@CheckPasswordMatch
+@CheckPasswordMatch
 public class User extends BaseEntity {
 
 	@Column(name="first_name")

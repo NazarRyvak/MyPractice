@@ -5,10 +5,12 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.practice.validator.CheckPasswordMatchForStudent;
+
 import lombok.Data;
 
 @Data
-//@CheckPasswordMatchForStudent
+@CheckPasswordMatchForStudent
 public class StudentDTO {
 
 	@NotEmpty(message = "Student`s firstName field can`t be null")

@@ -5,10 +5,14 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
+import com.practice.validator.CheckIfUserEmailExist;
+import com.practice.validator.CheckIfUserLoginExist;
+import com.practice.validator.CheckPasswordMatch;
+
 import lombok.Data;
 
 @Data
-//@CheckPasswordMatch
+@CheckPasswordMatch
 public class UserDTO {
 
 	@NotEmpty(message="The field firstName can`t be empty")
@@ -22,11 +26,11 @@ public class UserDTO {
 	private int age;
 	
 	@Email
-	//@CheckIfUserEmailExist
+	@CheckIfUserEmailExist
 	@NotEmpty(message="The field email can`t be empty")
 	private String email;
 	
-	//@CheckIfUserLoginExist
+	@CheckIfUserLoginExist
 	@NotEmpty(message="The field login can`t be empty")
 	private String login;
 	

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.practice.validator.CheckIfCountryExist;
+
 //import com.logos.validator.CheckIfCountryExist;
 
 import lombok.Data;
@@ -14,7 +16,7 @@ import lombok.Data;
 @Data
 public class Country extends BaseEntity {
 
-	//@CheckIfCountryExist
+	@CheckIfCountryExist
 	@NotEmpty(message="Country`s name field can`t be null")
 	private String name;
 
